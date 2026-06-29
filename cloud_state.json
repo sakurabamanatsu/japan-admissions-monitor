@@ -4,8 +4,9 @@
     "0ff9123358e28b19b066761226127aeaff04291c8eca7b195dca31b55d03d2f2": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国学校卒業 / 募集要項",
       "region": "关东",
       "school": "东京大学",
@@ -16,8 +17,9 @@
     "12e507a08c12978c49ec02da22581d83f7e17c0cc476a49702ce10acb2f3a1f6": {
       "category": "其他",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "留学生入試",
       "region": "关东",
       "school": "庆应义塾大学",
@@ -28,8 +30,9 @@
     "4744148b85197cba94e9147bbc34e16ad310acbd44ac98244e3c20be1b82f055": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国人留学生 / 留学生入試 / 外国人留学生入試 / 入試要項",
       "region": "关东",
       "school": "立教大学",
@@ -40,8 +43,9 @@
     "4cae849474fd86890bfa7614754e5c92506ab2796feddbfff44611f04074ad1b": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国人留学生 / 留学生入試 / 外国人留学生入試 / 入試要項",
       "region": "关东",
       "school": "法政大学",
@@ -52,8 +56,9 @@
     "506e402e4a70596286dde5ed89c5f4d0aa48080b13e3321748f45d26aa5ca269": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国人留学生 / 私費外国人留学生 / 募集要項 / 入学者選抜要項",
       "region": "关东",
       "school": "一橋大学",
@@ -64,8 +69,9 @@
     "64e39e15e490a42eedeaaf00af2425eb8ec7c1ddd307193b145cb7bac00372d6": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国学校卒業 / 募集要項",
       "region": "关东",
       "school": "东京大学",
@@ -76,8 +82,9 @@
     "78deb5d0121ba5bebf6fedcf35681ade1935602430018c36ff13abb9560ce785": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": false,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国人留学生 / 入試要項",
       "region": "关东",
       "school": "法政大学",
@@ -88,8 +95,9 @@
     "9d5ea13c6f9e5425cafe21295d27d9fe00a043c399a30e79fe71abd2c764ab87": {
       "category": "募集要项",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": true,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国学校卒業 / 募集要項",
       "region": "关东",
       "school": "东京大学",
@@ -100,8 +108,9 @@
     "f5a246556ed83f5a2633a4a9ec201c93bdc8d3016a523ea8f1674ed676c268c7": {
       "category": "其他",
       "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "is_new_until": "",
       "is_pdf": true,
-      "last_seen_at": "2026-06-29T03:16:04+00:00",
+      "last_seen_at": "2026-06-29T03:32:19+00:00",
       "matched": "外国学校卒業",
       "region": "关东",
       "school": "东京大学",
@@ -111,7 +120,7 @@
     }
   },
   "last_run": {
-    "checked_at": "2026-06-29T03:16:04+00:00",
+    "checked_at": "2026-06-29T03:32:19+00:00",
     "errors": 0,
     "results": 9,
     "schools": 23

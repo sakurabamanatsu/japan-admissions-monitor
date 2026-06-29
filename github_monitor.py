@@ -166,6 +166,10 @@ def main():
             key = monitor.item_key(item["school"], item["url"])
             old = known_items.get(key)
             first_seen = old.get("first_seen_at") if old else checked_at.isoformat()
+            changed = old is not None and old.get("title") != item["title"]
+            newly_detected = (
+                initialized and school_was_known and (old is None or changed)
+            )
             record = {
                 "school": item["school"],
                 "region": REGIONS.get(item["school"], "其他"),
@@ -177,9 +181,13 @@ def main():
                 "is_pdf": item["url"].lower().split("?", 1)[0].endswith(".pdf"),
                 "first_seen_at": first_seen,
                 "last_seen_at": checked_at.isoformat(),
+                "is_new_until": (
+                    (checked_at + timedelta(days=7)).isoformat()
+                    if newly_detected
+                    else old.get("is_new_until", "") if old else ""
+                ),
             }
-            changed = old is not None and old.get("title") != item["title"]
-            if initialized and school_was_known and (old is None or changed):
+            if newly_detected:
                 new_items.append(record)
             known_items[key] = record
 
@@ -192,15 +200,14 @@ def main():
     }
     save_json(STATE_FILE, state)
 
-    new_threshold = checked_at - timedelta(days=7)
     rows = []
     for key, item in known_items.items():
         row = {"id": key, **item}
         try:
-            first_seen = datetime.fromisoformat(item["first_seen_at"])
+            new_until = datetime.fromisoformat(item.get("is_new_until", ""))
         except (TypeError, ValueError):
-            first_seen = checked_at - timedelta(days=365)
-        row["is_new"] = initialized and first_seen >= new_threshold
+            new_until = checked_at - timedelta(days=1)
+        row["is_new"] = new_until >= checked_at
         rows.append(row)
     rows.sort(key=lambda row: row["first_seen_at"], reverse=True)
 

@@ -241,6 +241,7 @@ def main():
     payload = {
         "generated_at": checked_at.isoformat(),
         "interval_minutes": 15,
+        "schedule_text": "每日 08:30–17:45，每 15 分钟检查",
         "last_error": f"{len(errors)} 个网页访问失败" if errors else "",
         "counts": {
             "total": len(rows),

@@ -4,7 +4,7 @@
 
 ## 工作方式
 
-- GitHub Actions 每 15 分钟运行一次
+- GitHub Actions 在日本时间每天 08:30–17:45 每 15 分钟运行一次
 - `github_monitor.py` 检查 `schools.csv` 中启用的学校
 - 首次运行只建立基准，不发送旧内容通知
 - 新内容保留“新发现”标记 7 天

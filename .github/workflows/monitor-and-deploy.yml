@@ -6,7 +6,9 @@ on:
     branches:
       - main
   schedule:
-    - cron: "7,22,37,52 * * * *"
+    # GitHub cron uses UTC. These are 08:30-17:45 in Japan (JST).
+    - cron: "30,45 23 * * *"
+    - cron: "0,15,30,45 0-8 * * *"
 
 concurrency:
   group: admissions-monitor
@@ -30,6 +32,7 @@ jobs:
           python-version: "3.13"
 
       - name: Check university websites
+        if: github.event_name != 'push'
         env:
           EMAIL_SMTP_HOST: ${{ secrets.EMAIL_SMTP_HOST }}
           EMAIL_SMTP_PORT: ${{ secrets.EMAIL_SMTP_PORT }}
@@ -39,6 +42,7 @@ jobs:
         run: python github_monitor.py
 
       - name: Save monitoring state
+        if: github.event_name != 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -60,7 +60,8 @@ async function loadStatus() {
     $("#monitorState").textContent = data.generated_at
       ? `云端更新：${formatDate(data.generated_at)}`
       : "等待首次云端检查";
-    $("#scheduleText").textContent = `每 ${data.interval_minutes} 分钟检查`;
+    $("#scheduleText").textContent = data.schedule_text
+      || `每 ${data.interval_minutes} 分钟检查`;
     return;
   }
   const data = await api("/api/status");

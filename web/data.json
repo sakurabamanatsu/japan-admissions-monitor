@@ -7,6 +7,7 @@
   },
   "generated_at": "2026-06-29T21:55:14+00:00",
   "interval_minutes": 15,
+  "schedule_text": "每日 08:30–17:45，每 15 分钟检查",
   "items": [
     {
       "category": "募集要项",

@@ -66,7 +66,13 @@ def infer_category(title, matched):
         return "大学院"
     if any(
         word in text
-        for word in ("募集要項", "入試要項", "出願要項", "guidelines")
+        for word in (
+            "募集要項",
+            "入試要項",
+            "入学試験要項",
+            "出願要項",
+            "guidelines",
+        )
     ):
         return "募集要项"
     return "其他"
@@ -158,6 +164,14 @@ def main():
     initialized = bool(state.get("initialized"))
     known_items = state.setdefault("items", {})
     schools = monitor.load_schools()
+    ownership_by_school = {
+        school["name"]: school.get("ownership", "未分类")
+        for school in schools
+    }
+    for item in known_items.values():
+        item["ownership"] = ownership_by_school.get(
+            item.get("school", ""), "未分类"
+        )
     keywords = monitor.load_keywords()
     checked_at = utc_now()
     errors = []
@@ -183,6 +197,7 @@ def main():
             )
             record = {
                 "school": item["school"],
+                "ownership": school.get("ownership", "未分类"),
                 "region": REGIONS.get(item["school"], "其他"),
                 "category": infer_category(item["title"], item["matched"]),
                 "title": item["title"],
@@ -236,6 +251,7 @@ def main():
         "schools": [
             {
                 "name": school["name"],
+                "ownership": school.get("ownership", "未分类"),
                 "url": school["url"],
                 "region": REGIONS.get(school["name"], "其他"),
                 "active": True,

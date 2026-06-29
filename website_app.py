@@ -73,6 +73,7 @@ def init_database():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 school TEXT NOT NULL,
                 region TEXT NOT NULL,
+                ownership TEXT NOT NULL DEFAULT '未分类',
                 category TEXT NOT NULL,
                 title TEXT NOT NULL,
                 url TEXT NOT NULL UNIQUE,
@@ -103,6 +104,10 @@ def init_database():
             conn.execute(
                 "ALTER TABLE items ADD COLUMN relevance INTEGER NOT NULL DEFAULT 0"
             )
+        if "ownership" not in columns:
+            conn.execute(
+                "ALTER TABLE items ADD COLUMN ownership TEXT NOT NULL DEFAULT '未分类'"
+            )
     import_existing_state()
     import_latest_report()
     refresh_item_classification()
@@ -114,7 +119,16 @@ def infer_category(title, matched):
         return "学部"
     if any(word in text for word in ("大学院", "修士", "博士", "graduate")):
         return "大学院"
-    if any(word in text for word in ("募集要項", "入試要項", "出願要項", "guidelines")):
+    if any(
+        word in text
+        for word in (
+            "募集要項",
+            "入試要項",
+            "入学試験要項",
+            "出願要項",
+            "guidelines",
+        )
+    ):
         return "募集要项"
     return "其他"
 
@@ -172,6 +186,18 @@ def infer_relevance(title, matched):
     return 0
 
 
+def ownership_for_school(name):
+    with monitor.SCHOOLS_CSV.open(
+        "r", encoding="utf-8-sig", newline=""
+    ) as file:
+        for row in csv.DictReader(file):
+            if row.get("name") == name:
+                ownership = row.get("ownership", "")
+                if ownership in ("国立", "公立", "私立"):
+                    return ownership
+    return "未分类"
+
+
 def import_existing_state():
     state = monitor.load_state()
     rows = state.get("items", {}).values()
@@ -186,13 +212,14 @@ def import_existing_state():
             conn.execute(
                 """
                 INSERT OR IGNORE INTO items
-                (school, region, category, title, url, matched, source, is_pdf,
-                 first_seen_at, last_seen_at, is_new, relevance)
-                VALUES (?, ?, ?, ?, ?, '', ?, ?, ?, ?, 0, ?)
+                (school, region, ownership, category, title, url, matched,
+                 source, is_pdf, first_seen_at, last_seen_at, is_new, relevance)
+                VALUES (?, ?, ?, ?, ?, ?, '', ?, ?, ?, ?, 0, ?)
                 """,
                 (
                     school,
                     REGIONS.get(school, "其他"),
+                    ownership_for_school(school),
                     infer_category(title, ""),
                     title,
                     url,
@@ -230,11 +257,16 @@ def import_latest_report():
 
 def refresh_item_classification():
     with db_connection() as conn:
-        rows = conn.execute("SELECT id, title, matched FROM items").fetchall()
+        rows = conn.execute(
+            "SELECT id, school, title, matched FROM items"
+        ).fetchall()
         for row in rows:
             conn.execute(
-                "UPDATE items SET category=?, relevance=? WHERE id=?",
+                """
+                UPDATE items SET ownership=?, category=?, relevance=? WHERE id=?
+                """,
                 (
+                    ownership_for_school(row["school"]),
                     infer_category(row["title"], row["matched"]),
                     infer_relevance(row["title"], row["matched"]),
                     row["id"],
@@ -262,6 +294,7 @@ def save_items(items, checked_at, baseline):
             values = (
                 item["school"],
                 REGIONS.get(item["school"], "其他"),
+                ownership_for_school(item["school"]),
                 infer_category(item["title"], item["matched"]),
                 item["title"],
                 item["url"],
@@ -276,18 +309,33 @@ def save_items(items, checked_at, baseline):
                 conn.execute(
                     """
                     INSERT INTO items
-                    (school, region, category, title, url, matched, source, is_pdf,
-                     first_seen_at, last_seen_at, is_new, relevance)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    (school, region, ownership, category, title, url, matched,
+                     source, is_pdf, first_seen_at, last_seen_at, is_new,
+                     relevance)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
-                    (*values[:-2], checked_at, values[-2], values[-1]),
+                    (
+                        values[0],
+                        values[1],
+                        values[2],
+                        values[3],
+                        values[4],
+                        values[5],
+                        values[6],
+                        values[7],
+                        values[8],
+                        checked_at,
+                        checked_at,
+                        values[10],
+                        values[11],
+                    ),
                 )
             else:
                 conn.execute(
                     """
-                    UPDATE items SET school=?, region=?, category=?, title=?,
-                    matched=?, source=?, is_pdf=?, last_seen_at=?, is_new=?,
-                    relevance=?
+                    UPDATE items SET school=?, region=?, ownership=?, category=?,
+                    title=?, matched=?, source=?, is_pdf=?, last_seen_at=?,
+                    is_new=?, relevance=?
                     WHERE url=?
                     """,
                     (
@@ -295,13 +343,14 @@ def save_items(items, checked_at, baseline):
                         values[1],
                         values[2],
                         values[3],
-                        values[5],
+                        values[4],
                         values[6],
                         values[7],
                         values[8],
                         values[9],
                         values[10],
-                        values[4],
+                        values[11],
+                        values[5],
                     ),
                 )
             if is_new:
@@ -381,7 +430,7 @@ def read_school_rows():
 
 
 def write_school_rows(rows):
-    fields = ["enabled", "name", "url", "notes"]
+    fields = ["enabled", "name", "ownership", "url", "notes"]
     with monitor.SCHOOLS_CSV.open("w", encoding="utf-8-sig", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
@@ -463,7 +512,7 @@ class WebsiteHandler(SimpleHTTPRequestHandler):
 
     def get_items(self, query):
         keyword = query.get("q", [""])[0].strip()
-        school = query.get("school", [""])[0].strip()
+        ownership = query.get("ownership", [""])[0].strip()
         region = query.get("region", [""])[0].strip()
         category = query.get("category", [""])[0].strip()
         pdf_only = query.get("pdf", [""])[0] == "1"
@@ -473,7 +522,11 @@ class WebsiteHandler(SimpleHTTPRequestHandler):
         if keyword:
             clauses.append("(title LIKE ? OR school LIKE ? OR matched LIKE ?)")
             params.extend([f"%{keyword}%"] * 3)
-        for column, value in (("school", school), ("region", region), ("category", category)):
+        for column, value in (
+            ("ownership", ownership),
+            ("region", region),
+            ("category", category),
+        ):
             if value:
                 clauses.append(f"{column}=?")
                 params.append(value)
@@ -542,9 +595,14 @@ class WebsiteHandler(SimpleHTTPRequestHandler):
         replacement = {
             "enabled": "yes" if payload.get("active", True) else "no",
             "name": name,
+            "ownership": monitor.clean_text(
+                payload.get("ownership", "未分类")
+            ),
             "url": url,
             "notes": monitor.clean_text(payload.get("notes", "网站添加")),
         }
+        if replacement["ownership"] not in ("国立", "公立", "私立"):
+            raise ValueError("大学类型必须是国立、公立或私立")
         old_name = monitor.clean_text(payload.get("old_name", ""))
         replaced = False
         for index, row in enumerate(rows):

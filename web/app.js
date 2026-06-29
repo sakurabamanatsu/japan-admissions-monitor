@@ -86,7 +86,7 @@ function queryString() {
   const params = new URLSearchParams();
   const values = {
     q: $("#searchInput").value.trim(),
-    school: $("#schoolFilter").value,
+    ownership: $("#ownershipFilter").value,
     region: $("#regionFilter").value,
     category: $("#categoryFilter").value,
   };
@@ -104,7 +104,7 @@ async function loadItems() {
     items = data.items.filter((item) => {
       const text = `${item.title} ${item.school} ${item.matched}`.toLowerCase();
       return (!keyword || text.includes(keyword))
-        && (!$("#schoolFilter").value || item.school === $("#schoolFilter").value)
+        && (!$("#ownershipFilter").value || item.ownership === $("#ownershipFilter").value)
         && (!$("#regionFilter").value || item.region === $("#regionFilter").value)
         && (!$("#categoryFilter").value || item.category === $("#categoryFilter").value)
         && (!$("#pdfFilter").checked || item.is_pdf)
@@ -129,6 +129,7 @@ function renderItems(items) {
            data-id="${item.id}">${escapeHtml(item.title)}</a>
         <div class="tags">
           ${item.is_new ? '<span class="tag new">新发现</span>' : ""}
+          <span class="tag">${escapeHtml(item.ownership || "未分类")}</span>
           <span class="tag">${escapeHtml(item.category)}</span>
           <span class="tag">${escapeHtml(item.region)}</span>
         </div>
@@ -154,15 +155,10 @@ async function loadSchools() {
     ? await loadStaticData()
     : await api("/api/schools");
   state.schools = data.schools;
-  const active = [...new Map(
-    data.schools.filter((school) => school.active).map((school) => [school.name, school])
-  ).values()];
-  $("#schoolFilter").innerHTML = '<option value="">全部学校</option>' +
-    active.map((school) => `<option>${escapeHtml(school.name)}</option>`).join("");
   $("#schoolList").innerHTML = data.schools.map((school) => `
     <div class="school-row ${school.active ? "" : "inactive"}">
       <div><strong>${escapeHtml(school.name)}</strong>
-        <small>${escapeHtml(school.region)} · ${school.active ? "监控中" : "已停用"}</small></div>
+        <small>${escapeHtml(school.ownership || "未分类")} · ${escapeHtml(school.region)} · ${school.active ? "监控中" : "已停用"}</small></div>
       <div class="school-row-actions" ${state.staticMode ? "hidden" : ""}>
         <button data-action="toggle" data-name="${escapeHtml(school.name)}">${school.active ? "停用" : "启用"}</button>
         <button data-action="edit" data-name="${escapeHtml(school.name)}">编辑</button>
@@ -212,6 +208,7 @@ $("#schoolForm").addEventListener("submit", async (event) => {
   await saveSchool({
     old_name: $("#oldSchoolName").value,
     name: $("#schoolName").value,
+    ownership: $("#schoolOwnership").value,
     url: $("#schoolUrl").value,
     active: $("#schoolActive").checked,
   });
@@ -224,6 +221,7 @@ $("#schoolList").addEventListener("click", async (event) => {
   if (button.dataset.action === "edit") {
     $("#oldSchoolName").value = school.name;
     $("#schoolName").value = school.name;
+    $("#schoolOwnership").value = school.ownership || "私立";
     $("#schoolUrl").value = school.url;
     $("#schoolActive").checked = school.active;
   } else if (button.dataset.action === "toggle") {
@@ -240,12 +238,12 @@ $("#searchInput").addEventListener("input", () => {
   clearTimeout(searchDelay);
   searchDelay = setTimeout(loadItems, 250);
 });
-["schoolFilter", "regionFilter", "categoryFilter", "pdfFilter", "newFilter"].forEach((id) => {
+["ownershipFilter", "regionFilter", "categoryFilter", "pdfFilter", "newFilter"].forEach((id) => {
   $(`#${id}`).addEventListener("change", loadItems);
 });
 $("#resetButton").addEventListener("click", () => {
   $("#searchInput").value = "";
-  $("#schoolFilter").value = "";
+  $("#ownershipFilter").value = "";
   $("#regionFilter").value = "";
   $("#categoryFilter").value = "";
   $("#pdfFilter").checked = false;

@@ -48,8 +48,13 @@
           <button class="text-button" id="resetButton">清除</button>
         </div>
         <label>
-          学校
-          <select id="schoolFilter"><option value="">全部学校</option></select>
+          大学类型
+          <select id="ownershipFilter">
+            <option value="">全部类型</option>
+            <option>国立</option>
+            <option>公立</option>
+            <option>私立</option>
+          </select>
         </label>
         <label>
           地区
@@ -100,6 +105,11 @@
       <input type="hidden" id="oldSchoolName">
       <div class="form-grid">
         <label>学校名称<input id="schoolName" required placeholder="例如：东京大学"></label>
+        <label>大学类型
+          <select id="schoolOwnership" required>
+            <option>国立</option><option>公立</option><option>私立</option>
+          </select>
+        </label>
         <label>官网招生页面<input id="schoolUrl" type="url" required placeholder="https://..."></label>
       </div>
       <label class="check-row"><input type="checkbox" id="schoolActive" checked> 启用自动监控</label>

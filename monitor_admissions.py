@@ -286,7 +286,12 @@ def load_schools():
                 continue
             if not name or not usable_url(url):
                 continue
-            schools.append({"name": name, "url": url})
+            ownership = clean_text(row.get("ownership", ""))
+            if ownership not in ("国立", "公立", "私立"):
+                ownership = "未分类"
+            schools.append(
+                {"name": name, "ownership": ownership, "url": url}
+            )
     return schools
 
 

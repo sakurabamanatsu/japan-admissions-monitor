@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SCHOOLS_CSV = ROOT / "schools.csv"
-FIELDS = ["enabled", "name", "url", "notes"]
+FIELDS = ["enabled", "name", "ownership", "url", "notes"]
 
 
 def clean(value):
@@ -42,7 +42,10 @@ def print_rows(rows):
         return
     for index, row in enumerate(rows, start=1):
         status = "启用" if is_enabled(row) else "停用"
-        print(f"  {index}. [{status}] {row['name']} - {row['url']}")
+        print(
+            f"  {index}. [{status}] [{row['ownership'] or '未分类'}] "
+            f"{row['name']} - {row['url']}"
+        )
 
 
 def ask_number(prompt, max_value):
@@ -60,13 +63,25 @@ def ask_number(prompt, max_value):
 def add_school(rows):
     print("")
     name = input("学校名：").strip()
+    ownership = input("大学类型（国立/公立/私立）：").strip()
+    if ownership not in ("国立", "公立", "私立"):
+        print("大学类型必须填写：国立、公立或私立。")
+        return
     url = input("招生页面网址：https://").strip()
     if url and not url.startswith(("http://", "https://")):
         url = "https://" + url
     if not name or not url:
         print("学校名和网址都必须填写。")
         return
-    rows.append({"enabled": "yes", "name": name, "url": url, "notes": "手动添加"})
+    rows.append(
+        {
+            "enabled": "yes",
+            "name": name,
+            "ownership": ownership,
+            "url": url,
+            "notes": "手动添加",
+        }
+    )
     save_rows(rows)
     print("已添加并启用。")
 

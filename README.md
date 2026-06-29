@@ -17,6 +17,7 @@
 - `enabled` 为 `yes`：启用监控
 - `enabled` 为 `no`：停用监控
 - `name`：学校名称
+- `ownership`：填写 `国立`、`公立` 或 `私立`
 - `url`：学校官网的招生页面
 
 ## 邮件通知
@@ -34,4 +35,3 @@
 ## 手动运行
 
 打开仓库的 `Actions` 页面，选择 **Monitor universities and deploy website**，点击 **Run workflow**。
-

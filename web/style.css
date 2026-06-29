@@ -119,7 +119,7 @@ dialog::backdrop { background: #14211d80; }
 .dialog-head { padding: 22px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; }
 .dialog-head p { color: var(--muted); margin: 5px 0 0; font-size: 13px; }
 #schoolForm { padding: 20px 24px; background: var(--soft); border-bottom: 1px solid var(--line); }
-.form-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 14px; }
+.form-grid { display: grid; grid-template-columns: 1fr 140px 2fr; gap: 14px; }
 .form-actions { justify-content: flex-end; }
 .school-list { padding: 0 24px 18px; overflow: auto; max-height: 360px; }
 .cloud-note {

@@ -5,9 +5,9 @@ yes,大阪大学,https://www.osaka-u.ac.jp/ja/admissions/faculty,请确认这是
 yes,名古屋大学,https://www.nagoya-u.ac.jp/admissions/,请确认这是你想监视的招生页面
 yes,东北大学,https://admissions.tohoku.ac.jp/ja/,请确认这是你想监视的招生页面
 no,北海道大学,https://www.hokudai.ac.jp/admission/,官网响应较慢；找到更具体页面后再改成 yes
-yes,早稻田大学,https://www.waseda.jp/inst/admission/,yes
+yes,早稻田大学,https://www.waseda.jp/inst/admission/undergraduate/system/international/,外国学生学部入试官方页面
 yes,庆应义塾大学,https://www.keio.ac.jp/ja/admissions/,请确认这是你想监视的招生页面
-yes,立命馆大学,https://admission.ritsumei.ac.jp/,请确认这是你想监视的招生页面
+yes,立命馆大学,https://admission.ritsumei.ac.jp/admission/international/guidelines.html,外国人留学生入学试验要项官方页面
 yes,APU立命馆亚洲太平洋大学,https://admissions.apu.ac.jp/,请确认这是你想监视的招生页面
 yes,关西大学,https://www.nyusi.kansai-u.ac.jp/,手动添加
 yes,九州大学,https://www.kyushu-u.ac.jp/ja/admission,手动添加

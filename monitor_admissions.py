@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import csv
 import hashlib
+import heapq
 import html
 import json
 import os
@@ -26,17 +27,22 @@ EMAIL_CONFIG_FILE = ROOT / "email_config.txt"
 
 DEFAULT_KEYWORDS = [
     "外国人留学生",
+    "外国学生",
     "私費外国人留学生",
     "留学生入試",
     "外国人留学生入試",
     "外国学校卒業",
     "募集要項",
     "入試要項",
+    "入学試験要項",
     "出願要項",
     "入学者選抜要項",
     "application guidelines",
     "admission guidelines",
     "international students",
+    "international student",
+    "international admission",
+    "ryugakusei",
 ]
 
 CRAWL_HINTS = [
@@ -194,6 +200,69 @@ def should_follow(text):
     return any(hint.lower() in lower for hint in CRAWL_HINTS)
 
 
+def link_priority(text, keywords):
+    lower = text.lower()
+    score = 0
+    strong_hints = (
+        "外国人",
+        "外国学生",
+        "留学生",
+        "international student",
+        "international applicant",
+        "international/",
+    )
+    guideline_hints = (
+        "募集要項",
+        "入試要項",
+        "入学試験要項",
+        "出願要項",
+        "application guideline",
+        "admission guideline",
+        "guidelines",
+    )
+    score += sum(100 for hint in strong_hints if hint in lower)
+    score += sum(40 for hint in guideline_hints if hint in lower)
+    score += sum(15 for keyword in keywords if keyword.lower() in lower)
+    score += sum(5 for hint in CRAWL_HINTS if hint.lower() in lower)
+    if re.search(r"20\d{2}", lower):
+        score += 10
+    if any(
+        hint in lower
+        for hint in (
+            "イベント",
+            "open.?campus",
+            "オープンキャンパス",
+            "contact",
+            "お問い合わせ",
+            "archive",
+            "過去問題",
+            "result",
+            "入試結果",
+        )
+    ):
+        score -= 20
+    return score
+
+
+def pdf_item(school, url, source_text, keywords):
+    combined = f"{source_text} {url}"
+    hits = keyword_hits(combined, keywords)
+    if not hits:
+        return None
+    title = clean_text(source_text) or "PDF"
+    if "ryugakusei-youkou" in url.lower():
+        year_match = re.search(r"/(20\d{2})/", url)
+        year = f"{year_match.group(1)}年度 " if year_match else ""
+        title = f"{year}{school['name']} 外国人留学生入学試験要項（PDF）"
+    return {
+        "school": school["name"],
+        "title": title,
+        "url": url,
+        "matched": " / ".join(hits),
+        "source": url,
+    }
+
+
 def item_key(school, url):
     return hashlib.sha256(f"{school}\n{url}".encode("utf-8")).hexdigest()
 
@@ -308,14 +377,18 @@ def send_email_notification(to_address, new_items, report_path):
     return True, "邮件已发送。"
 
 
-def collect_school(school, keywords, max_follow=12):
+def collect_school(
+    school, keywords, max_follow=40, max_pages=15, max_depth=3
+):
     found = []
     errors = []
     visited = set()
-    queue = [(school["url"], 0, "学校设置的网址")]
+    queued = {school["url"]}
+    queue = [(0, 0, school["url"], 0, "学校设置的网址")]
+    sequence = 0
 
-    while queue:
-        url, depth, source_text = queue.pop(0)
+    while queue and len(visited) < max_pages:
+        _, _, url, depth, source_text = heapq.heappop(queue)
         if url in visited:
             continue
         visited.add(url)
@@ -328,18 +401,10 @@ def collect_school(school, keywords, max_follow=12):
 
         lower_url = final_url.lower()
         if "pdf" in content_type.lower() or lower_url.endswith(".pdf"):
-            combined = f"{source_text} {final_url}"
-            hits = keyword_hits(combined, keywords)
-            if hits:
-                found.append(
-                    {
-                        "school": school["name"],
-                        "title": clean_text(source_text) or "PDF",
-                        "url": final_url,
-                        "matched": " / ".join(hits),
-                        "source": url,
-                    }
-                )
+            item = pdf_item(school, final_url, source_text, keywords)
+            if item:
+                item["source"] = url
+                found.append(item)
             continue
 
         if "html" not in content_type.lower() and raw[:100].lower().find(b"<html") == -1:
@@ -359,10 +424,10 @@ def collect_school(school, keywords, max_follow=12):
                 }
             )
 
-        if depth >= 1:
+        if depth >= max_depth:
             continue
 
-        followed = 0
+        candidates = []
         for link in page["links"]:
             href = (link.get("href") or "").strip()
             if href.startswith(("#", "mailto:", "tel:", "javascript:")):
@@ -371,13 +436,33 @@ def collect_school(school, keywords, max_follow=12):
             if not usable_url(next_url) or not same_site(final_url, next_url):
                 continue
             link_text = clean_text(f'{link.get("text", "")} {next_url}')
+            if urlparse(next_url).path.lower().endswith(".pdf"):
+                item = pdf_item(school, next_url, link_text, keywords)
+                if item:
+                    item["source"] = final_url
+                    found.append(item)
+                continue
             if keyword_hits(link_text, keywords) or should_follow(link_text):
-                queue.append((next_url, depth + 1, link_text))
-                followed += 1
-                if followed >= max_follow:
-                    break
+                candidates.append(
+                    (link_priority(link_text, keywords), next_url, link_text)
+                )
 
-        time.sleep(0.5)
+        candidates.sort(key=lambda candidate: candidate[0], reverse=True)
+        followed = 0
+        for priority, next_url, link_text in candidates:
+            if next_url in visited or next_url in queued:
+                continue
+            sequence += 1
+            heapq.heappush(
+                queue,
+                (-priority, sequence, next_url, depth + 1, link_text),
+            )
+            queued.add(next_url)
+            followed += 1
+            if followed >= max_follow:
+                break
+
+        time.sleep(0.2)
 
     unique = {}
     for item in found:

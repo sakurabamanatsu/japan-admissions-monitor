@@ -124,14 +124,18 @@ def infer_relevance(title, matched):
     text = f"{title} {matched}".lower()
     foreign_terms = (
         "外国人",
+        "外国学生",
         "外国学校",
         "留学生",
         "international student",
         "international applicant",
+        "/international/",
+        "ryugakusei",
     )
     admission_terms = (
         "募集要項",
         "入試要項",
+        "入学試験要項",
         "出願要項",
         "選考",
         "入試",
@@ -144,6 +148,7 @@ def infer_relevance(title, matched):
     guideline_terms = (
         "募集要項",
         "入試要項",
+        "入学試験要項",
         "出願要項",
         "application guideline",
         "admission guideline",
@@ -152,6 +157,12 @@ def infer_relevance(title, matched):
     admission_in_title = any(term in title_text for term in admission_terms)
     guideline_in_title = any(term in title_text for term in guideline_terms)
     foreign_anywhere = any(term in text for term in foreign_terms)
+    excluded = any(
+        term in title_text
+        for term in ("入試結果", "過去問題", "/result", "result.pdf", "archive")
+    )
+    if excluded and not guideline_in_title:
+        return 0
     if (foreign_in_title and admission_in_title) or (
         guideline_in_title and foreign_anywhere
     ):

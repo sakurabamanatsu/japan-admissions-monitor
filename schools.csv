@@ -1,0 +1,26 @@
+﻿enabled,name,url,notes
+yes,东京大学,https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html,外国学校卒業学生特別選考页面
+no,京都大学,https://www.kyoto-u.ac.jp/ja/admissions/undergrad,请确认这是你想监视的招生页面
+yes,大阪大学,https://www.osaka-u.ac.jp/ja/admissions/faculty,请确认这是你想监视的招生页面
+yes,名古屋大学,https://www.nagoya-u.ac.jp/admissions/,请确认这是你想监视的招生页面
+yes,东北大学,https://admissions.tohoku.ac.jp/ja/,请确认这是你想监视的招生页面
+no,北海道大学,https://www.hokudai.ac.jp/admission/,官网响应较慢；找到更具体页面后再改成 yes
+yes,早稻田大学,https://www.waseda.jp/inst/admission/,请确认这是你想监视的招生页面
+yes,庆应义塾大学,https://www.keio.ac.jp/ja/admissions/,请确认这是你想监视的招生页面
+yes,立命馆大学,https://admission.ritsumei.ac.jp/,请确认这是你想监视的招生页面
+yes,APU立命馆亚洲太平洋大学,https://admissions.apu.ac.jp/,请确认这是你想监视的招生页面
+yes,关西大学,https://www.nyusi.kansai-u.ac.jp/,手动添加
+yes,九州大学,https://www.kyushu-u.ac.jp/ja/admission,手动添加
+yes,東洋大学,https://www.toyo.ac.jp/nyushi,手动添加
+yes,中央大学,https://www.chuo-u.ac.jp/admission,手动添加
+yes,立教大学,https://www.rikkyo.ac.jp/admissions,手动添加
+yes,日本大学,https://www.nihon-u.ac.jp/admission_info,手动添加
+yes,法政大学,https://nyushi.hosei.ac.jp/,手动添加
+yes,駒沢大学,https://think.komazawa-u.ac.jp/,手动添加
+yes,東海大学,https://www.u-tokai.ac.jp/examination-admissions/,手动添加
+yes,名古屋大学,https://www.nagoya-u.ac.jp/admissions/exam/,手动添加
+yes,一橋大学,https://juken.hit-u.ac.jp/admission/info/guidelines/index.html,手动添加
+yes,青山学院大学,https://www.aoyama.ac.jp/admission/,手动添加
+yes,同志社大学,https://www.doshisha.ac.jp/admissions_undergrad/index.html,手动添加
+yes,専修大学,https://www.senshu-u.ac.jp/admission/admiss_info.html,手动添加
+yes,龍谷大学,https://www.ryukoku.ac.jp/admission/nyushi/,手动添加

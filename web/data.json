@@ -1,0 +1,279 @@
+{
+  "counts": {
+    "new_count": 0,
+    "pdf_count": 2,
+    "school_count": 22,
+    "total": 9
+  },
+  "generated_at": "2026-06-29T02:39:35+00:00",
+  "interval_minutes": 15,
+  "items": [
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "0ff9123358e28b19b066761226127aeaff04291c8eca7b195dca31b55d03d2f2",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国学校卒業 / 募集要項",
+      "region": "关东",
+      "school": "东京大学",
+      "source": "https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html",
+      "title": "外国学校卒業学生特別選考第1種：私費留学生・第2種：帰国生徒 | 東京大学",
+      "url": "https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "9d5ea13c6f9e5425cafe21295d27d9fe00a043c399a30e79fe71abd2c764ab87",
+      "is_new": false,
+      "is_pdf": true,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国学校卒業 / 募集要項",
+      "region": "关东",
+      "school": "东京大学",
+      "source": "https://www.u-tokyo.ac.jp/content/400247319.pdf",
+      "title": "2026年度 東京大学外国学校卒業学生特別選考 募集要項 (PDFファイル： 995KB) https://www.u-tokyo.ac.jp/content/400247319.pdf",
+      "url": "https://www.u-tokyo.ac.jp/content/400247319.pdf"
+    },
+    {
+      "category": "其他",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "f5a246556ed83f5a2633a4a9ec201c93bdc8d3016a523ea8f1674ed676c268c7",
+      "is_new": false,
+      "is_pdf": true,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国学校卒業",
+      "region": "关东",
+      "school": "东京大学",
+      "source": "https://www.u-tokyo.ac.jp/content/400272013.pdf",
+      "title": "・【重要】2026年度 東京大学外国学校卒業学生特別選考 出願方法について（PDFファイル：1MB） https://www.u-tokyo.ac.jp/content/400272013.pdf",
+      "url": "https://www.u-tokyo.ac.jp/content/400272013.pdf"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "64e39e15e490a42eedeaaf00af2425eb8ec7c1ddd307193b145cb7bac00372d6",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国学校卒業 / 募集要項",
+      "region": "关东",
+      "school": "东京大学",
+      "source": "https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_014.html",
+      "title": "外国学校卒業学生特別選考Q&A | 東京大学",
+      "url": "https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_014.html"
+    },
+    {
+      "category": "其他",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "12e507a08c12978c49ec02da22581d83f7e17c0cc476a49702ce10acb2f3a1f6",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "留学生入試",
+      "region": "关东",
+      "school": "庆应义塾大学",
+      "source": "https://www.keio.ac.jp/ja/admissions/international-student/",
+      "title": "留学生向け入学案内 | 慶應義塾",
+      "url": "https://www.keio.ac.jp/ja/admissions/international-student/"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "4744148b85197cba94e9147bbc34e16ad310acbd44ac98244e3c20be1b82f055",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国人留学生 / 留学生入試 / 外国人留学生入試 / 入試要項",
+      "region": "关东",
+      "school": "立教大学",
+      "source": "https://www.rikkyo.ac.jp/admissions/undergraduate/guidelines/index.html",
+      "title": "特別入試 入試要項 | 立教大学",
+      "url": "https://www.rikkyo.ac.jp/admissions/undergraduate/guidelines/"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "4cae849474fd86890bfa7614754e5c92506ab2796feddbfff44611f04074ad1b",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国人留学生 / 留学生入試 / 外国人留学生入試 / 入試要項",
+      "region": "关东",
+      "school": "法政大学",
+      "source": "https://nyushi.hosei.ac.jp/news/article/20270323_01",
+      "title": "2027年度外国人留学生入試の概要と変更点について :: 法政大学入試情報サイト",
+      "url": "https://nyushi.hosei.ac.jp/news/article/20270323_01/"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "78deb5d0121ba5bebf6fedcf35681ade1935602430018c36ff13abb9560ce785",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国人留学生 / 入試要項",
+      "region": "关东",
+      "school": "法政大学",
+      "source": "https://nyushi.hosei.ac.jp/nyushi/guide",
+      "title": "入試要項・入試ガイド :: 法政大学入試情報サイト",
+      "url": "https://nyushi.hosei.ac.jp/nyushi/guide/"
+    },
+    {
+      "category": "募集要项",
+      "first_seen_at": "2026-06-29T02:39:35+00:00",
+      "id": "506e402e4a70596286dde5ed89c5f4d0aa48080b13e3321748f45d26aa5ca269",
+      "is_new": false,
+      "is_pdf": false,
+      "last_seen_at": "2026-06-29T02:39:35+00:00",
+      "matched": "外国人留学生 / 私費外国人留学生 / 募集要項 / 入学者選抜要項",
+      "region": "关东",
+      "school": "一橋大学",
+      "source": "https://juken.hit-u.ac.jp/admission/info/guidelines/index.html",
+      "title": "入試制度・選抜要項・募集要項 | 一橋大学 一橋大学で学びたい方へ",
+      "url": "https://juken.hit-u.ac.jp/admission/info/guidelines/index.html"
+    }
+  ],
+  "last_error": "",
+  "schools": [
+    {
+      "active": true,
+      "name": "东京大学",
+      "region": "关东",
+      "url": "https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html"
+    },
+    {
+      "active": true,
+      "name": "大阪大学",
+      "region": "关西",
+      "url": "https://www.osaka-u.ac.jp/ja/admissions/faculty"
+    },
+    {
+      "active": true,
+      "name": "名古屋大学",
+      "region": "中部",
+      "url": "https://www.nagoya-u.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "name": "东北大学",
+      "region": "东北",
+      "url": "https://admissions.tohoku.ac.jp/ja/"
+    },
+    {
+      "active": true,
+      "name": "早稻田大学",
+      "region": "关东",
+      "url": "https://www.waseda.jp/inst/admission/"
+    },
+    {
+      "active": true,
+      "name": "庆应义塾大学",
+      "region": "关东",
+      "url": "https://www.keio.ac.jp/ja/admissions/"
+    },
+    {
+      "active": true,
+      "name": "立命馆大学",
+      "region": "关西",
+      "url": "https://admission.ritsumei.ac.jp/"
+    },
+    {
+      "active": true,
+      "name": "APU立命馆亚洲太平洋大学",
+      "region": "九州",
+      "url": "https://admissions.apu.ac.jp/"
+    },
+    {
+      "active": true,
+      "name": "关西大学",
+      "region": "关西",
+      "url": "https://www.nyusi.kansai-u.ac.jp/"
+    },
+    {
+      "active": true,
+      "name": "九州大学",
+      "region": "九州",
+      "url": "https://www.kyushu-u.ac.jp/ja/admission"
+    },
+    {
+      "active": true,
+      "name": "東洋大学",
+      "region": "关东",
+      "url": "https://www.toyo.ac.jp/nyushi"
+    },
+    {
+      "active": true,
+      "name": "中央大学",
+      "region": "关东",
+      "url": "https://www.chuo-u.ac.jp/admission"
+    },
+    {
+      "active": true,
+      "name": "立教大学",
+      "region": "关东",
+      "url": "https://www.rikkyo.ac.jp/admissions"
+    },
+    {
+      "active": true,
+      "name": "日本大学",
+      "region": "关东",
+      "url": "https://www.nihon-u.ac.jp/admission_info"
+    },
+    {
+      "active": true,
+      "name": "法政大学",
+      "region": "关东",
+      "url": "https://nyushi.hosei.ac.jp/"
+    },
+    {
+      "active": true,
+      "name": "駒沢大学",
+      "region": "关东",
+      "url": "https://think.komazawa-u.ac.jp/"
+    },
+    {
+      "active": true,
+      "name": "東海大学",
+      "region": "关东",
+      "url": "https://www.u-tokai.ac.jp/examination-admissions/"
+    },
+    {
+      "active": true,
+      "name": "名古屋大学",
+      "region": "中部",
+      "url": "https://www.nagoya-u.ac.jp/admissions/exam/"
+    },
+    {
+      "active": true,
+      "name": "一橋大学",
+      "region": "关东",
+      "url": "https://juken.hit-u.ac.jp/admission/info/guidelines/index.html"
+    },
+    {
+      "active": true,
+      "name": "青山学院大学",
+      "region": "关东",
+      "url": "https://www.aoyama.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "name": "同志社大学",
+      "region": "关西",
+      "url": "https://www.doshisha.ac.jp/admissions_undergrad/index.html"
+    },
+    {
+      "active": true,
+      "name": "専修大学",
+      "region": "关东",
+      "url": "https://www.senshu-u.ac.jp/admission/admiss_info.html"
+    },
+    {
+      "active": true,
+      "name": "龍谷大学",
+      "region": "关西",
+      "url": "https://www.ryukoku.ac.jp/admission/nyushi/"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# 每行一个关键词。网页或链接里出现这些词，就会被报告出来。
+# 你可以按需要增加学校常用说法。
+外国人留学生
+私費外国人留学生
+留学生入試
+外国人留学生入試
+外国学校卒業
+募集要項
+入試要項
+出願要項
+入学者選抜要項
+application guidelines
+admission guidelines
+international students

@@ -1,0 +1,10 @@
+# Local email and runtime data must never be published.
+email_config.txt
+state/
+reports/
+logs/
+.pycache/
+__pycache__/
+*.pyc
+.DS_Store
+

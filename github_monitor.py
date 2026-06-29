@@ -111,14 +111,15 @@ def is_relevant(title, matched):
 
 
 def send_email(new_items):
-    host = os.environ.get("EMAIL_SMTP_HOST", "smtp.gmail.com").strip()
-    port = int(os.environ.get("EMAIL_SMTP_PORT", "465"))
+    host = os.environ.get("EMAIL_SMTP_HOST", "").strip() or "smtp.gmail.com"
+    port_text = os.environ.get("EMAIL_SMTP_PORT", "").strip() or "465"
     user = os.environ.get("EMAIL_USER", "").strip()
     password = os.environ.get("EMAIL_PASSWORD", "").strip()
     recipient = os.environ.get("EMAIL_TO", "").strip()
     if not (host and user and password and recipient and new_items):
         print("邮件未配置或没有新内容，跳过发送。")
         return
+    port = int(port_text)
 
     message = EmailMessage()
     message["Subject"] = f"发现 {len(new_items)} 条新的日本大学留学生入试信息"
@@ -235,4 +236,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

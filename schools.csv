@@ -1,4 +1,5 @@
 ﻿enabled,name,ownership,region,batch,url,notes
+yes,明治大学,私立,关东,3,https://www.meiji.ac.jp/cip/prospective/admission_exams/undergraduate.html
 yes,东京大学,国立,关东,1,https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html,Excel导入；外国人留学生入試ページ；外国学校卒業学生特別選考（第1種）ページ。；确认日 2026-06-29
 yes,京都大学,国立,中部,2,https://www.kyoto-u.ac.jp/ja/international/students1/study1/undergraduate/addmissions,Excel导入；外国人留学生入試ページ；外国人留学生のための学部入学案内ページ。学部別の私費外国人留学生特別選抜ページもあり。；确认日 2026-06-29
 yes,大阪大学,国立,关西,3,https://www.osaka-u.ac.jp/ja/admissions/faculty/expense,Excel导入；外国人留学生入試ページ；私費外国人留学生特別入試の専用ページ。；确认日 2026-06-29

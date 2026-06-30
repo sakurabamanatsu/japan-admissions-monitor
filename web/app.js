@@ -130,6 +130,7 @@ function renderItems(items) {
            data-id="${item.id}">${escapeHtml(item.title)}</a>
         <div class="tags">
           ${item.is_new ? '<span class="tag new">新发现</span>' : ""}
+          ${item.is_pdf ? `<span class="tag">${item.pdf_year_status === "target" ? "PDF正文确认" : "标题确认"}</span>` : ""}
           <span class="tag">${escapeHtml(item.ownership || "未分类")}</span>
           <span class="tag">${escapeHtml(item.category)}</span>
           <span class="tag">${escapeHtml(item.region)}</span>

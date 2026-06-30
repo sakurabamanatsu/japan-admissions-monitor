@@ -3,7 +3,9 @@ import csv
 import hashlib
 import heapq
 import html
+from io import BytesIO
 import json
+import logging
 import os
 import re
 import subprocess
@@ -16,6 +18,18 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urldefrag, urljoin, urlparse
 from urllib.request import Request, urlopen
+
+try:
+    from pypdf import PdfReader
+except ImportError:
+    PdfReader = None
+else:
+    logging.getLogger("pypdf").setLevel(logging.ERROR)
+
+try:
+    import pdfplumber
+except ImportError:
+    pdfplumber = None
 
 
 ROOT = Path(__file__).resolve().parent
@@ -203,7 +217,11 @@ def fetch(url, timeout=12):
         with urlopen(req, timeout=timeout) as response:
             final_url = response.geturl()
             content_type = response.headers.get("Content-Type", "")
-            raw = response.read(2_000_000)
+            is_pdf = (
+                "pdf" in content_type.lower()
+                or urlparse(final_url).path.lower().endswith(".pdf")
+            )
+            raw = response.read(15_000_000 if is_pdf else 2_000_000)
         return final_url, content_type, raw
     except Exception:
         return fetch_with_curl(url)
@@ -226,6 +244,36 @@ def parse_html(raw):
         "text": clean_text(" ".join(parser.text_parts)),
         "links": parser.links,
     }
+
+
+def inspect_pdf_admission_year(raw, max_pages=5):
+    if PdfReader is None and pdfplumber is None:
+        return "unreadable", 0, ""
+    page_text = []
+    try:
+        if PdfReader is not None:
+            reader = PdfReader(BytesIO(raw), strict=False)
+            for page in reader.pages[:max_pages]:
+                page_text.append(page.extract_text() or "")
+    except Exception:
+        page_text = []
+    text = clean_text(" ".join(page_text))
+    if len(text) < 80 and pdfplumber is not None:
+        try:
+            with pdfplumber.open(BytesIO(raw)) as pdf:
+                page_text = [
+                    page.extract_text() or ""
+                    for page in pdf.pages[:max_pages]
+                ]
+            text = clean_text(" ".join(page_text))
+        except Exception:
+            pass
+    heading_text = clean_text(" ".join(page_text[:2]))
+    if is_target_admission_year(heading_text):
+        return "target", len(text), text
+    if len(text) < 80:
+        return "unreadable", len(text), text
+    return "not_target", len(text), text
 
 
 def same_site(url_a, url_b):
@@ -305,8 +353,8 @@ def link_priority(text, keywords):
     return score
 
 
-def pdf_item(school, url, source_text, keywords):
-    combined = f"{source_text} {url}"
+def pdf_item(school, url, source_text, keywords, pdf_text=""):
+    combined = f"{source_text} {url} {pdf_text}"
     hits = keyword_hits(combined, keywords)
     if not hits:
         return None
@@ -484,10 +532,21 @@ def collect_school(
 
         lower_url = final_url.lower()
         if "pdf" in content_type.lower() or lower_url.endswith(".pdf"):
-            item = pdf_item(school, final_url, source_text, keywords)
+            pdf_year_status, pdf_text_chars, pdf_text = (
+                inspect_pdf_admission_year(raw)
+            )
+            item = pdf_item(
+                school,
+                final_url,
+                source_text,
+                keywords,
+                pdf_text[:20_000],
+            )
             if item:
                 item["source"] = url
                 item["content_hash"] = hashlib.sha256(raw).hexdigest()
+                item["pdf_year_status"] = pdf_year_status
+                item["pdf_text_chars"] = pdf_text_chars
                 found.append(item)
             continue
 
@@ -523,10 +582,14 @@ def collect_school(
             if is_scholarship_related(link_text):
                 continue
             if urlparse(next_url).path.lower().endswith(".pdf"):
-                item = pdf_item(school, next_url, link_text, keywords)
-                if item:
-                    item["source"] = final_url
-                    found.append(item)
+                if keyword_hits(link_text, keywords):
+                    candidates.append(
+                        (
+                            link_priority(link_text, keywords) + 300,
+                            next_url,
+                            link_text,
+                        )
+                    )
                 continue
             if keyword_hits(link_text, keywords) or should_follow(link_text):
                 candidates.append(

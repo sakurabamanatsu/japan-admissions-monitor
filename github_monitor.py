@@ -85,12 +85,17 @@ def infer_category(title, matched):
     return "其他"
 
 
-def is_relevant(title, matched):
+def is_relevant(title, matched, pdf_year_status=""):
     title_text = title.lower()
     combined = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return False
-    if not monitor.is_target_admission_year(title):
+    if pdf_year_status == "not_target":
+        return False
+    if (
+        pdf_year_status != "target"
+        and not monitor.is_target_admission_year(title)
+    ):
         return False
     foreign_terms = (
         "外国人",
@@ -246,7 +251,11 @@ def main():
         key: item
         for key, item in known_items.items()
         if item.get("school") in valid_school_names
-        and is_relevant(item.get("title", ""), item.get("matched", ""))
+        and is_relevant(
+            item.get("title", ""),
+            item.get("matched", ""),
+            item.get("pdf_year_status", ""),
+        )
     }
     state["items"] = known_items
     ownership_by_school = {
@@ -275,9 +284,14 @@ def main():
         errors.extend(f"{school['name']}: {error}" for error in school_errors)
         school_was_known = school["name"] in baselined_schools
         for item in items:
-            if not is_relevant(item["title"], item["matched"]):
-                continue
             key = monitor.item_key(item["school"], item["url"])
+            if not is_relevant(
+                item["title"],
+                item["matched"],
+                item.get("pdf_year_status", ""),
+            ):
+                known_items.pop(key, None)
+                continue
             old = known_items.get(key)
             first_seen = old.get("first_seen_at") if old else checked_at.isoformat()
             changed = old is not None and old.get("title") != item["title"]
@@ -305,6 +319,8 @@ def main():
                 "last_seen_at": checked_at.isoformat(),
                 "content_hash": item.get("content_hash")
                 or old.get("content_hash", "") if old else item.get("content_hash", ""),
+                "pdf_year_status": item.get("pdf_year_status", ""),
+                "pdf_text_chars": item.get("pdf_text_chars", 0),
                 "is_new_until": (
                     (checked_at + timedelta(days=7)).isoformat()
                     if newly_detected

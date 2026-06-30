@@ -83,6 +83,7 @@ def init_database():
                 first_seen_at TEXT NOT NULL,
                 last_seen_at TEXT NOT NULL,
                 is_new INTEGER NOT NULL DEFAULT 0,
+                pdf_year_status TEXT NOT NULL DEFAULT '',
                 relevance INTEGER NOT NULL DEFAULT 0
             );
             CREATE INDEX IF NOT EXISTS idx_items_school ON items(school);
@@ -107,6 +108,10 @@ def init_database():
         if "ownership" not in columns:
             conn.execute(
                 "ALTER TABLE items ADD COLUMN ownership TEXT NOT NULL DEFAULT '未分类'"
+            )
+        if "pdf_year_status" not in columns:
+            conn.execute(
+                "ALTER TABLE items ADD COLUMN pdf_year_status TEXT NOT NULL DEFAULT ''"
             )
     import_existing_state()
     import_latest_report()
@@ -139,12 +144,17 @@ def infer_category(title, matched):
     return "其他"
 
 
-def infer_relevance(title, matched):
+def infer_relevance(title, matched, pdf_year_status=""):
     title_text = title.lower()
     text = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return 0
-    if not monitor.is_target_admission_year(title):
+    if pdf_year_status == "not_target":
+        return 0
+    if (
+        pdf_year_status != "target"
+        and not monitor.is_target_admission_year(title)
+    ):
         return 0
     foreign_terms = (
         "外国人",
@@ -262,8 +272,9 @@ def import_existing_state():
                 """
                 INSERT OR IGNORE INTO items
                 (school, region, ownership, category, title, url, matched,
-                 source, is_pdf, first_seen_at, last_seen_at, is_new, relevance)
-                VALUES (?, ?, ?, ?, ?, ?, '', ?, ?, ?, ?, 0, ?)
+                 source, is_pdf, first_seen_at, last_seen_at, is_new,
+                 pdf_year_status, relevance)
+                VALUES (?, ?, ?, ?, ?, ?, '', ?, ?, ?, ?, 0, ?, ?)
                 """,
                 (
                     school,
@@ -276,7 +287,12 @@ def import_existing_state():
                     is_pdf,
                     row.get("first_seen_at", ""),
                     row.get("last_seen_at", ""),
-                    infer_relevance(title, ""),
+                    row.get("pdf_year_status", ""),
+                    infer_relevance(
+                        title,
+                        "",
+                        row.get("pdf_year_status", ""),
+                    ),
                 ),
             )
 
@@ -307,7 +323,7 @@ def import_latest_report():
 def refresh_item_classification():
     with db_connection() as conn:
         rows = conn.execute(
-            "SELECT id, school, title, matched FROM items"
+            "SELECT id, school, title, matched, pdf_year_status FROM items"
         ).fetchall()
         for row in rows:
             conn.execute(
@@ -319,7 +335,11 @@ def refresh_item_classification():
                     region_for_school(row["school"]),
                     ownership_for_school(row["school"]),
                     infer_category(row["title"], row["matched"]),
-                    infer_relevance(row["title"], row["matched"]),
+                    infer_relevance(
+                        row["title"],
+                        row["matched"],
+                        row["pdf_year_status"],
+                    ),
                     row["id"],
                 ),
             )
@@ -352,18 +372,23 @@ def save_items(items, checked_at, baseline):
                 item["matched"],
                 item["source"],
                 int(urlparse(item["url"]).path.lower().endswith(".pdf")),
+                item.get("pdf_year_status", ""),
                 checked_at,
                 is_new,
-                infer_relevance(item["title"], item["matched"]),
+                infer_relevance(
+                    item["title"],
+                    item["matched"],
+                    item.get("pdf_year_status", ""),
+                ),
             )
             if existing is None:
                 conn.execute(
                     """
                     INSERT INTO items
                     (school, region, ownership, category, title, url, matched,
-                     source, is_pdf, first_seen_at, last_seen_at, is_new,
-                     relevance)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                     source, is_pdf, pdf_year_status, first_seen_at,
+                     last_seen_at, is_new, relevance)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """,
                     (
                         values[0],
@@ -375,18 +400,19 @@ def save_items(items, checked_at, baseline):
                         values[6],
                         values[7],
                         values[8],
+                        values[9],
                         checked_at,
                         checked_at,
-                        values[10],
                         values[11],
+                        values[12],
                     ),
                 )
             else:
                 conn.execute(
                     """
                     UPDATE items SET school=?, region=?, ownership=?, category=?,
-                    title=?, matched=?, source=?, is_pdf=?, last_seen_at=?,
-                    is_new=?, relevance=?
+                    title=?, matched=?, source=?, is_pdf=?,
+                    pdf_year_status=?, last_seen_at=?, is_new=?, relevance=?
                     WHERE url=?
                     """,
                     (
@@ -401,6 +427,7 @@ def save_items(items, checked_at, baseline):
                         values[9],
                         values[10],
                         values[11],
+                        values[12],
                         values[5],
                     ),
                 )

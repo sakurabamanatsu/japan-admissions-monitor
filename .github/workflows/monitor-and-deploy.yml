@@ -14,6 +14,9 @@ concurrency:
   group: admissions-monitor
   cancel-in-progress: false
 
+env:
+  TARGET_ADMISSION_YEAR: "2027"
+
 permissions:
   contents: write
   pages: write

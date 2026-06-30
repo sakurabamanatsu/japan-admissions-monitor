@@ -144,6 +144,8 @@ def infer_relevance(title, matched):
     text = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return 0
+    if not monitor.is_target_admission_year(title):
+        return 0
     foreign_terms = (
         "外国人",
         "外国学生",

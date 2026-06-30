@@ -90,6 +90,8 @@ def is_relevant(title, matched):
     combined = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return False
+    if not monitor.is_target_admission_year(title):
+        return False
     foreign_terms = (
         "外国人",
         "外国学生",
@@ -234,6 +236,12 @@ def main():
     if os.environ.get("MONITOR_BATCH", "").strip().lower() == "auto":
         state["last_scheduled_batch"] = active_batch
     valid_school_names = {school["name"] for school in all_schools}
+    baselined_schools = set(
+        state.get(
+            "baselined_schools",
+            valid_school_names if initialized else [],
+        )
+    )
     known_items = {
         key: item
         for key, item in known_items.items()
@@ -265,9 +273,7 @@ def main():
         print(f"- {school['name']}", flush=True)
         items, school_errors = monitor.collect_school(school, keywords)
         errors.extend(f"{school['name']}: {error}" for error in school_errors)
-        school_was_known = any(
-            row.get("school") == school["name"] for row in known_items.values()
-        )
+        school_was_known = school["name"] in baselined_schools
         for item in items:
             if not is_relevant(item["title"], item["matched"]):
                 continue
@@ -308,8 +314,13 @@ def main():
             if newly_detected:
                 new_items.append(record)
             known_items[key] = record
+        baselined_schools.add(school["name"])
 
     state["initialized"] = True
+    state["target_admission_year"] = monitor.TARGET_ADMISSION_YEAR
+    state["baselined_schools"] = sorted(
+        baselined_schools & valid_school_names
+    )
     state["last_run"] = {
         "checked_at": checked_at.isoformat(),
         "schools": len(schools),
@@ -335,6 +346,7 @@ def main():
     unique_schools = {school["name"] for school in all_schools}
     payload = {
         "generated_at": checked_at.isoformat(),
+        "target_admission_year": monitor.TARGET_ADMISSION_YEAR,
         "interval_minutes": 15,
         "schedule_text": "每日 08:30–17:45 分批检查；每所大学约每小时一次",
         "active_batch": active_batch,

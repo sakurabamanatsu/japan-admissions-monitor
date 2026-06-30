@@ -9,6 +9,7 @@ import re
 import subprocess
 import sys
 import time
+import unicodedata
 from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
@@ -24,6 +25,7 @@ STATE_DIR = ROOT / "state"
 REPORT_DIR = ROOT / "reports"
 STATE_FILE = STATE_DIR / "seen_items.json"
 EMAIL_CONFIG_FILE = ROOT / "email_config.txt"
+TARGET_ADMISSION_YEAR = int(os.environ.get("TARGET_ADMISSION_YEAR", "2027"))
 
 DEFAULT_KEYWORDS = [
     "外国人留学生",
@@ -97,6 +99,17 @@ SCHOLARSHIP_EXCLUSION_TERMS = (
 def is_scholarship_related(text):
     lower = text.lower()
     return any(term in lower for term in SCHOLARSHIP_EXCLUSION_TERMS)
+
+
+def is_target_admission_year(text, target_year=TARGET_ADMISSION_YEAR):
+    normalized = unicodedata.normalize("NFKC", text).lower()
+    reiwa_year = target_year - 2018
+    patterns = (
+        rf"(?<!\d){target_year}(?!\d)",
+        rf"令和\s*0?{reiwa_year}(?!\d)",
+        rf"(?<![a-z0-9])r0?{reiwa_year}(?!\d)",
+    )
+    return any(re.search(pattern, normalized) for pattern in patterns)
 
 
 class LinkParser(HTMLParser):
@@ -268,6 +281,8 @@ def link_priority(text, keywords):
     score += sum(40 for hint in guideline_hints if hint in lower)
     score += sum(15 for keyword in keywords if keyword.lower() in lower)
     score += sum(5 for hint in CRAWL_HINTS if hint.lower() in lower)
+    if is_target_admission_year(text):
+        score += 200
     if re.search(r"20\d{2}", lower):
         score += 10
     if any(

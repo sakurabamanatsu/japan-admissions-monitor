@@ -142,6 +142,8 @@ def infer_category(title, matched):
 def infer_relevance(title, matched):
     title_text = title.lower()
     text = f"{title} {matched}".lower()
+    if monitor.is_scholarship_related(title):
+        return 0
     foreign_terms = (
         "外国人",
         "外国学生",

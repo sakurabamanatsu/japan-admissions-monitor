@@ -2,9 +2,9 @@
   "active_batch": "4",
   "counts": {
     "new_count": 28,
-    "pdf_count": 106,
+    "pdf_count": 102,
     "school_count": 109,
-    "total": 337
+    "total": 329
   },
   "error_details": [],
   "generated_at": "2026-06-30T02:25:06+00:00",
@@ -436,23 +436,6 @@
       "url": "https://global.ynu.ac.jp/admissions/mext_research-university/"
     },
     {
-      "category": "募集要项",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:25:06+00:00",
-      "id": "acd70190cdacd08a8893e6b41e0de4bd5eb82f8aa5bbaa17ecdf0ca0ce64b1a5",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T02:25:06+00:00",
-      "matched": "外国人留学生 / 募集要項",
-      "ownership": "国立",
-      "region": "关东",
-      "school": "横浜国立大学",
-      "source": "https://global.ynu.ac.jp/admissions/mext_research-university/",
-      "title": "2026年度文部科学省大学推薦による国費外国人留学生（研究留学生・一般枠）への推薦者（研究生）募集要項 https://global.ynu.ac.jp/wordpress/wp-content/uploads/2025/12/MEXT_G_Application_Guidelines_2026jp.pdf",
-      "url": "https://global.ynu.ac.jp/wordpress/wp-content/uploads/2025/12/MEXT_G_Application_Guidelines_2026jp.pdf"
-    },
-    {
       "category": "其他",
       "content_hash": "",
       "first_seen_at": "2026-06-30T02:25:06+00:00",
@@ -672,23 +655,6 @@
       "source": "https://www.tufs.ac.jp/admission/international_applicant/exchange_in/",
       "title": "留学生の種別 | 本学をめざす外国人留学生の方へ | 入試情報 | 東京外国語大学",
       "url": "https://www.tufs.ac.jp/admission/international_applicant/exchange_in/"
-    },
-    {
-      "category": "募集要项",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:25:06+00:00",
-      "id": "86319dcb0863087ef30b7f0cd6aeda3281d7026db1a78fc216535013f639bebe",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": false,
-      "last_seen_at": "2026-06-30T02:25:06+00:00",
-      "matched": "外国人留学生 / 大学院入試 / 募集要項",
-      "ownership": "国立",
-      "region": "关东",
-      "school": "東京外国語大学",
-      "source": "https://www.tufs.ac.jp/admission/international_applicant/exchange_in/mext_scholarship.html",
-      "title": "文部科学省の国費留学生として学ぶ | 留学生の種別 | 本学をめざす外国人留学生の方へ | 入試情報 | 東京外国語大学",
-      "url": "https://www.tufs.ac.jp/admission/international_applicant/exchange_in/mext_scholarship.html"
     },
     {
       "category": "其他",
@@ -2493,23 +2459,6 @@
       "url": "https://www.kaiyodai.ac.jp/entranceexamination/undergraduate/requirements/"
     },
     {
-      "category": "大学院",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:13:54+00:00",
-      "id": "337fc3255fba3e6cbe5bb20d1da5c797d922fa5d72d2200e230d633ca0426ff8",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T02:13:54+00:00",
-      "matched": "博士",
-      "ownership": "国立",
-      "region": "关西",
-      "school": "京都工芸繊維大学",
-      "source": "https://www.kit.ac.jp/test_index/successfulapplicants/",
-      "title": "令和８年度春学期授業料免除申請要項【博士後期課程一般入試・留学生用】 https://www.kit.ac.jp/wp/wp-content/uploads/2026/03/R8_spring_jyugyoryomenjo_d_shihi.pdf",
-      "url": "https://www.kit.ac.jp/wp/wp-content/uploads/2026/03/R8_spring_jyugyoryomenjo_d_shihi.pdf"
-    },
-    {
       "category": "募集要项",
       "content_hash": "",
       "first_seen_at": "2026-06-30T02:13:54+00:00",
@@ -2663,23 +2612,6 @@
       "url": "https://www.saitama-u.ac.jp/international/backnumber/ApplicationGuidelineKanekoInternationalFoudation.pdf"
     },
     {
-      "category": "募集要项",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:13:54+00:00",
-      "id": "6251d54957962915b97cc174856291c44b75afb77d9e7475e7b7ea4d35c58cad",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": false,
-      "last_seen_at": "2026-06-30T02:13:54+00:00",
-      "matched": "外国人留学生 / 大学院入試 / 研究科 / 修士 / 募集要項",
-      "ownership": "国立",
-      "region": "关东",
-      "school": "東京藝術大学",
-      "source": "https://admissions.geidai.ac.jp/international-students/government-financed/",
-      "title": "国費留学生 – 東京藝術大学入試情報サイト",
-      "url": "https://admissions.geidai.ac.jp/international-students/government-financed/"
-    },
-    {
       "category": "其他",
       "content_hash": "",
       "first_seen_at": "2026-06-30T02:13:54+00:00",
@@ -2831,23 +2763,6 @@
       "source": "https://www.kyoto-u.ac.jp/ja/admissions/grad",
       "title": "大学院入試 | 京都大学",
       "url": "https://www.kyoto-u.ac.jp/ja/admissions/grad"
-    },
-    {
-      "category": "募集要项",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:13:54+00:00",
-      "id": "85f97d75e211bd63d85a3f192a9c623b2f18cfe0498579b729ae796449c75939",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T02:13:54+00:00",
-      "matched": "外国人留学生 / 募集要項",
-      "ownership": "国立",
-      "region": "关西",
-      "school": "三重大学",
-      "source": "https://www.mie-u.ac.jp/international/internationalstudents/japanese-studies/",
-      "title": "2026年度大学推薦による国費外国人留学生（日本語・日本文化研修留学生）募集要項 https://www.mie-u.ac.jp/international/item/Guideline2026.pdf",
-      "url": "https://www.mie-u.ac.jp/international/item/Guideline2026.pdf"
     },
     {
       "category": "其他",
@@ -3601,23 +3516,6 @@
       "category": "募集要项",
       "content_hash": "",
       "first_seen_at": "2026-06-30T02:13:54+00:00",
-      "id": "fa3911019ad8f098bebb42ba98e9fe5820909420e91bf56a00b83a309584ccc9",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T02:13:54+00:00",
-      "matched": "募集要項 / international students / international student",
-      "ownership": "国立",
-      "region": "关东",
-      "school": "東京海洋大学",
-      "source": "https://www.kaiyodai.ac.jp/international/foreignstudents/",
-      "title": "【国費留学生向け】2026年度募集要項 /【For MEXT Scholarship international students】Application Guideline 2026 https://www.kaiyodai.ac.jp/international/upload-file/f0718f718fd2f4f412e26bed0df23b66cded7ca4.pdf",
-      "url": "https://www.kaiyodai.ac.jp/international/upload-file/f0718f718fd2f4f412e26bed0df23b66cded7ca4.pdf"
-    },
-    {
-      "category": "募集要项",
-      "content_hash": "",
-      "first_seen_at": "2026-06-30T02:13:54+00:00",
       "id": "fb2a000a31df3c1289b547ec8af7880e6003534186187e2d18ce7e239aadca2d",
       "is_new": false,
       "is_new_until": "",
@@ -4243,22 +4141,6 @@
     {
       "category": "大学院",
       "first_seen_at": "2026-06-30T02:03:47+00:00",
-      "id": "931c6a62d610b1b576a35cde31f421d79591f3962225afe6b20639a5921de9e8",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": false,
-      "last_seen_at": "2026-06-30T02:08:17+00:00",
-      "matched": "外国人留学生 / 募集要項",
-      "ownership": "国立",
-      "region": "关东",
-      "school": "総合研究大学院大学",
-      "source": "https://www.soken.ac.jp/admission/mextscholarship/",
-      "title": "国費留学生として入学を希望する方へ | 入学案内 | 国立大学法人 総合研究大学院大学",
-      "url": "https://www.soken.ac.jp/admission/mextscholarship/"
-    },
-    {
-      "category": "大学院",
-      "first_seen_at": "2026-06-30T02:03:47+00:00",
       "id": "9408c6527411c3d5ec4974bf12c9391129069896544b646f7d47f22b256af3c7",
       "is_new": false,
       "is_new_until": "",
@@ -4495,22 +4377,6 @@
       "source": "https://www.gunma-u.ac.jp/admission/g2107/g30174",
       "title": "私費外国人留学生選抜学生募集要項 | 国立大学法人群馬大学",
       "url": "https://www.gunma-u.ac.jp/admission/g2107/g30174"
-    },
-    {
-      "category": "其他",
-      "first_seen_at": "2026-06-30T02:03:47+00:00",
-      "id": "c747159064e44576f1bf1f4883b00239eca0bf52b1d22c3299744722ffdee4ec",
-      "is_new": false,
-      "is_new_until": "",
-      "is_pdf": false,
-      "last_seen_at": "2026-06-30T02:08:17+00:00",
-      "matched": "外国人留学生 / 大学院入試 / 研究科",
-      "ownership": "公立",
-      "region": "中部",
-      "school": "名古屋市立大学",
-      "source": "https://www.nagoya-cu.ac.jp/admissions/graduate/international/index.html",
-      "title": "国費外国人留学生優先配置プログラム | 入試情報 | 名古屋市立大学",
-      "url": "https://www.nagoya-cu.ac.jp/admissions/graduate/international/"
     },
     {
       "category": "大学院",

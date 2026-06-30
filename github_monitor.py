@@ -88,6 +88,8 @@ def infer_category(title, matched):
 def is_relevant(title, matched):
     title_text = title.lower()
     combined = f"{title} {matched}".lower()
+    if monitor.is_scholarship_related(title):
+        return False
     foreign_terms = (
         "外国人",
         "外国学生",

@@ -75,6 +75,29 @@ CRAWL_HINTS = [
     "doctoral",
 ]
 
+SCHOLARSHIP_EXCLUSION_TERMS = (
+    "奨学金",
+    "奨学生",
+    "国費",
+    "給付金",
+    "授業料免除",
+    "授業料減免",
+    "入学料免除",
+    "入学料減免",
+    "学費支援",
+    "経済支援",
+    "scholarship",
+    "tuition waiver",
+    "tuition exemption",
+    "jasso",
+    "mext",
+)
+
+
+def is_scholarship_related(text):
+    lower = text.lower()
+    return any(term in lower for term in SCHOLARSHIP_EXCLUSION_TERMS)
+
 
 class LinkParser(HTMLParser):
     def __init__(self):
@@ -262,6 +285,8 @@ def link_priority(text, keywords):
         )
     ):
         score -= 20
+    if is_scholarship_related(text):
+        score -= 200
     return score
 
 
@@ -480,6 +505,8 @@ def collect_school(
             if not usable_url(next_url) or not same_site(final_url, next_url):
                 continue
             link_text = clean_text(f'{link.get("text", "")} {next_url}')
+            if is_scholarship_related(link_text):
+                continue
             if urlparse(next_url).path.lower().endswith(".pdf"):
                 item = pdf_item(school, next_url, link_text, keywords)
                 if item:

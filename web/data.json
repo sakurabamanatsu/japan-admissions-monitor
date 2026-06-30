@@ -3,7 +3,7 @@
   "counts": {
     "new_count": 29,
     "pdf_count": 39,
-    "school_count": 109,
+    "school_count": 268,
     "total": 55
   },
   "error_details": [],
@@ -1867,6 +1867,1278 @@
       "ownership": "公立",
       "region": "中部",
       "url": "https://www.nagoya-cu.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "愛知県立大学",
+      "ownership": "公立",
+      "region": "中部",
+      "url": "https://www.aichi-pu.ac.jp/prospective/undergraduate/guide.html"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "静岡県立大学",
+      "ownership": "公立",
+      "region": "中部",
+      "url": "https://www.u-shizuoka-ken.ac.jp/for-applicants/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "静岡文化芸術大学",
+      "ownership": "公立",
+      "region": "中部",
+      "url": "https://www.suac.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "京都府立大学",
+      "ownership": "公立",
+      "region": "关西",
+      "url": "https://www.kpu.ac.jp/admissions/exam/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "大阪公立大学",
+      "ownership": "公立",
+      "region": "关西",
+      "url": "https://www.omu.ac.jp/admissions/ug/exam_info/special/foreigner/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "神戸市外国語大学",
+      "ownership": "公立",
+      "region": "关西",
+      "url": "https://www.kobe-cufs.ac.jp/admissions/index.html"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "滋賀県立大学",
+      "ownership": "公立",
+      "region": "关西",
+      "url": "https://www.usp.ac.jp/nyushi/senbatsuyoukou/r9_nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "兵庫県立大学",
+      "ownership": "公立",
+      "region": "关西",
+      "url": "https://www.u-hyogo.ac.jp/hyogoon/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "下関市立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.shimonoseki-cu.ac.jp/nyushi/admiss/yoko"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "山口県立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.yamaguchi-pu.ac.jp/ee/eo/youkou-pdf/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "岡山県立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.oka-pu.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "広島市立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.hiroshima-cu.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "島根県立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.u-shimane.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "尾道市立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.onomichi-u.ac.jp/guidance/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "県立広島大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.pu-hiroshima.ac.jp/site/undergraduate-selection/boshuyoukou.html"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "高知県立大学",
+      "ownership": "公立",
+      "region": "其他",
+      "url": "https://www.u-kochi.ac.jp/site/nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "北九州市立大学",
+      "ownership": "公立",
+      "region": "九州",
+      "url": "https://www.kitakyu-u.ac.jp/entrance-exam/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "福岡女子大学",
+      "ownership": "公立",
+      "region": "九州",
+      "url": "http://www.fwu.ac.jp/exam_info/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "熊本県立大学",
+      "ownership": "公立",
+      "region": "九州",
+      "url": "https://www.pu-kumamoto.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "長崎県立大学",
+      "ownership": "公立",
+      "region": "九州",
+      "url": "https://sun.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "福岡県立大学",
+      "ownership": "公立",
+      "region": "九州",
+      "url": "https://www.fukuoka-pu.ac.jp/admission/index.html"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "酪農学園大学",
+      "ownership": "私立",
+      "region": "北海道",
+      "url": "https://nyushi.rakuno.ac.jp/guidance.html"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "東北芸術工科大学",
+      "ownership": "私立",
+      "region": "东北",
+      "url": "https://www.tuad.ac.jp/adm/information/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "千葉商科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.cuc.ac.jp/prospective/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "神奈川大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kanagawa-u.ac.jp/admissions/faculty/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "関東学院大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://ao.kanto-gakuin.ac.jp/library/application_guidelines/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "湘南工科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.shonan-it.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "山梨学院大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.ygu.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "流通経済大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.rku.ac.jp/with/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "獨協大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://nyushi.dokkyo.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "東京国際大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tiu.ac.jp/jukensei/entrance/special/#content--01"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "城西大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.josai.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "淑徳大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.shukutoku.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "フェリス女学院大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.ferris.ac.jp/news/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "文教大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.bunkyo.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "東京工芸大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.t-kougei.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "日本工業大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://juken.nit.ac.jp/examination/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "明海大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.meikai.ac.jp/03applicant/exam-information/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "神奈川工科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://op.kait.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "産業能率大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.sanno.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "駿河台大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.surugadai.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "神田外語大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kandagaigo.ac.jp/kuis/admissions/guide/ryugaku/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "帝京平成大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.thu.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "城西国際大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.jiu.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "目白大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.mejiro.ac.jp/univ/jyukensei/admission/exam/foreigner/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "西武文理大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://juken.bunri-c.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "尚美学園大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.shobi-u.ac.jp/examinee/admission/examination/foreign"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "ものつくり大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.iot.ac.jp/entrance/schedule/international/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "長岡大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.nagaokauniv.ac.jp/entrance/admissions/international-student/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "千葉科学大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.cis.ac.jp/admission/international-domestic/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "横浜美術大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.yokohama-art.ac.jp/admission"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "日本映画大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.eiga.ac.jp/admissions/guideline/international"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "亜細亜大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.asia-u.ac.jp/admissions/exam/foreign/foreign.html"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "学習院大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.univ.gakushuin.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "工学院大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kogakuin.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "國學院大學",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kokugakuin.ac.jp/admission/foreign"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "国際基督教大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.icu.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "国士舘大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kokushikan.ac.jp/prospective/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "芝浦工業大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.shibaura-it.ac.jp/examinee/undergraduate/index.html"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "順天堂大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.juntendo.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "昭和女子大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.swu.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "女子美術大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.joshibi.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "成蹊大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.seikei.ac.jp/university/s-net/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "大正大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://kokokara.tais.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "大東文化大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.daito.ac.jp/admission/news/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "拓殖大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.takushoku-u.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "多摩美術大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tamabi.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "津田塾大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tsuda.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "東京経済大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tku.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "東京女子大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.twcu.ac.jp/main/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "東京電機大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.dendai.ac.jp/about/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "東京薬科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.toyaku.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "東京理科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tus.ac.jp/admissions/university/guideline/general/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "二松学舎大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.nishogakusha-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "武蔵大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.musashi.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "東京都市大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tcu.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "武蔵野音楽大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.musashino-music.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "武蔵野美術大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.musabi.ac.jp/admission/undergraduate/foreign/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "明治大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.meiji.ac.jp/exam/undergraduate/foreign.html"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "明治学院大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.meijigakuin.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "立正大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://admissions.ris.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "杉野服飾大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.sugino-fc.ac.jp/examination/guide/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "文化学園大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://bwu.bunka.ac.jp/nyushi/foreign.php"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "明星大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.meisei-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "武蔵野大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.musashino-u.ac.jp/admission/faculty/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "桜美林大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://admissions.obirin.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "帝京大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.teikyo-u.ac.jp/applicants"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "東京造形大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.zokei.ac.jp/examinee/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "和光大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.wako.ac.jp/exam/faculty.html"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "杏林大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kyorin-u.ac.jp/univ/center/nyugaku/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "創価大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.soka.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "東京工科大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.teu.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "川村学園女子大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kgwu.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "多摩大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.tama.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "駒沢女子大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.komajo.ac.jp/uni/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "学習院女子大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.gwc.gakushuin.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "嘉悦大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.kaetsu.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "東京富士大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.fuji.ac.jp/sp/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "デジタルハリウッド大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.dhw.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "国際ファッション専門職大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.piif.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "愛知大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.aichi-u.ac.jp/exam"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "愛知工業大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.ait.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "藤田医科大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.fujita-hu.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "名古屋芸術大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.nua.ac.jp/examinee/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "愛知淑徳大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.aasa.ac.jp/welcome/exam/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "名古屋外国語大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.nufs.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "名古屋造形大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.nzu.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "名古屋産業大学",
+      "ownership": "私立",
+      "region": "中部",
+      "url": "https://www.nagoya-su.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "京都外国語大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kufs.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "大阪経済大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.osaka-ue.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "大阪工業大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.oit.ac.jp/japanese/juken/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "近畿大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://kindai.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "桃山学院大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.andrew.ac.jp/nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "関西学院大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kwansei.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "甲南大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://ch.konan-u.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "天理大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.tenri-u.ac.jp/ent/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "京都産業大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kyoto-su.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "大阪芸術大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.osaka-geidai.ac.jp/preparatory_student"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "大阪産業大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.osaka-sandai.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "大阪体育大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.ouhs.jp/nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "大手前大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.otemae.ac.jp/candidates/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "京都橘大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.tachibana-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "神戸国際大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kobe-kiu.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "京都先端科学大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kuas.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "奈良大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.nara-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "大阪経済法科大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.keiho-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "摂南大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.setsunan.ac.jp/nyushika/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "宝塚大学",
+      "ownership": "私立",
+      "region": "关东",
+      "url": "https://www.takara-univ.ac.jp/tokyo/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "大阪国際大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://oiuvoice.com/news/international/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "流通科学大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.umds.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "神戸芸術工科大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kobe-du.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "京都芸術大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kyoto-art.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "成安造形大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.seian.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "兵庫大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://juken.hyogo-dai.ac.jp/exam/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "京都文教大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kbu.ac.jp/kbu/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "関西国際大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kuins.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "嵯峨美術大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kyoto-saga.ac.jp/examinee/index/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "羽衣国際大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.hagoromo.ac.jp/nyuushi"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "神戸常盤大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kobe-tokiwa.ac.jp/univ/exam/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "京都美術工芸大学",
+      "ownership": "私立",
+      "region": "关西",
+      "url": "https://www.kyobi.ac.jp/examination/international/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "広島工業大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.it-hiroshima.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "広島女学院大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.hju.ac.jp/examination/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "広島経済大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.hue.ac.jp/entrance/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "福山大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.fukuyama-u.ac.jp/sp-entrance/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "就実大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.shujitsu.ac.jp/admissions_site/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "倉敷芸術科学大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.kusa.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "広島国際大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.hirokoku-u.ac.jp/admission/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "松山大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://nyushi.matsuyama-u.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "四国大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.shikoku-u.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "徳島文理大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://jyuken.bunri-u.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "高松大学",
+      "ownership": "私立",
+      "region": "其他",
+      "url": "https://www.takamatsu-u.ac.jp/exam/examination/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "九州産業大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.kyusan-u.ac.jp/nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "西南学院大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.seinan-gu.ac.jp/admissions/"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "福岡大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://nyushi.fukuoka-u.ac.jp/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "福岡工業大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.fit.ac.jp/nyushi/"
+    },
+    {
+      "active": true,
+      "batch": "1",
+      "name": "日本経済大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.jue.ac.jp/for_applicant/"
+    },
+    {
+      "active": true,
+      "batch": "2",
+      "name": "沖縄大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.okidai-pass.jp/entrance-exam"
+    },
+    {
+      "active": true,
+      "batch": "3",
+      "name": "福岡女学院大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.fukujo.ac.jp/university/exam/detail/"
+    },
+    {
+      "active": true,
+      "batch": "4",
+      "name": "西南女学院大学",
+      "ownership": "私立",
+      "region": "九州",
+      "url": "https://www.seinan-jo.ac.jp/nyushi/"
     }
   ],
   "target_admission_year": 2027

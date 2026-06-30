@@ -5,7 +5,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SCHOOLS_CSV = ROOT / "schools.csv"
-FIELDS = ["enabled", "name", "ownership", "url", "notes"]
+FIELDS = [
+    "enabled",
+    "name",
+    "ownership",
+    "region",
+    "batch",
+    "url",
+    "notes",
+]
 
 
 def clean(value):
@@ -25,7 +33,7 @@ def load_rows():
 
 def save_rows(rows):
     with SCHOOLS_CSV.open("w", encoding="utf-8-sig", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDS)
+        writer = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -43,7 +51,8 @@ def print_rows(rows):
     for index, row in enumerate(rows, start=1):
         status = "启用" if is_enabled(row) else "停用"
         print(
-            f"  {index}. [{status}] [{row['ownership'] or '未分类'}] "
+            f"  {index}. [{status}] [第{row['batch'] or '1'}批] "
+            f"[{row['ownership'] or '未分类'}] "
             f"{row['name']} - {row['url']}"
         )
 
@@ -67,6 +76,10 @@ def add_school(rows):
     if ownership not in ("国立", "公立", "私立"):
         print("大学类型必须填写：国立、公立或私立。")
         return
+    region = input("地区（北海道/东北/关东/中部/关西/九州/其他）：").strip()
+    if region not in ("北海道", "东北", "关东", "中部", "关西", "九州", "其他"):
+        print("地区填写不正确。")
+        return
     url = input("招生页面网址：https://").strip()
     if url and not url.startswith(("http://", "https://")):
         url = "https://" + url
@@ -78,6 +91,8 @@ def add_school(rows):
             "enabled": "yes",
             "name": name,
             "ownership": ownership,
+            "region": region,
+            "batch": str(len(rows) % 4 + 1),
             "url": url,
             "notes": "手动添加",
         }

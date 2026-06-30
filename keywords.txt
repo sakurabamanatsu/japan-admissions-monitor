@@ -6,6 +6,11 @@
 留学生入試
 外国人留学生入試
 外国学校卒業
+外国人留学生大学院入試
+大学院入試
+研究科
+修士
+博士
 募集要項
 入試要項
 入学試験要項
@@ -16,4 +21,9 @@ admission guidelines
 international students
 international student
 international admission
+international graduate
+graduate admission
+graduate school
+master's
+doctoral
 ryugakusei

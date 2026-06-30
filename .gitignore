@@ -5,6 +5,6 @@ reports/
 logs/
 .pycache/
 __pycache__/
+.tmp_excel/
 *.pyc
 .DS_Store
-

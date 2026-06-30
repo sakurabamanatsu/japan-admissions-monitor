@@ -39,6 +39,8 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          MONITOR_BATCH: ${{ github.event_name == 'schedule' && 'auto' || 'all' }}
+          MONITOR_BATCH_COUNT: "4"
         run: python github_monitor.py
 
       - name: Save monitoring state

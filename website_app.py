@@ -114,10 +114,16 @@ def init_database():
 
 
 def infer_category(title, matched):
+    title_text = title.lower()
     text = f"{title} {matched}".lower()
-    if any(word in text for word in ("学部", "本科", "undergraduate")):
+    if any(
+        word in title_text for word in ("学部", "本科", "undergraduate")
+    ):
         return "学部"
-    if any(word in text for word in ("大学院", "修士", "博士", "graduate")):
+    if any(
+        word in title_text
+        for word in ("大学院", "研究科", "修士", "博士", "graduate")
+    ):
         return "大学院"
     if any(
         word in text
@@ -171,14 +177,43 @@ def infer_relevance(title, matched):
     admission_in_title = any(term in title_text for term in admission_terms)
     guideline_in_title = any(term in title_text for term in guideline_terms)
     foreign_anywhere = any(term in text for term in foreign_terms)
+    graduate_in_title = any(
+        term in title_text
+        for term in (
+            "大学院",
+            "研究科",
+            "修士",
+            "博士",
+            "graduate school",
+            "master",
+            "doctoral",
+        )
+    )
     excluded = any(
         term in title_text
-        for term in ("入試結果", "過去問題", "/result", "result.pdf", "archive")
+        for term in (
+            "入試結果",
+            "入試問題",
+            "過去問題",
+            "合格発表",
+            "合格者",
+            "受験番号",
+            "受入れの方針",
+            "アドミッション・ポリシー",
+            "admission policy",
+            "/result",
+            "result.pdf",
+            "archive",
+        )
     )
     if excluded and not guideline_in_title:
         return 0
     if (foreign_in_title and admission_in_title) or (
         guideline_in_title and foreign_anywhere
+    ) or (
+        graduate_in_title
+        and foreign_anywhere
+        and (admission_in_title or guideline_in_title)
     ):
         return 3
     if foreign_anywhere or any(term in text for term in admission_terms):
@@ -196,6 +231,16 @@ def ownership_for_school(name):
                 if ownership in ("国立", "公立", "私立"):
                     return ownership
     return "未分类"
+
+
+def region_for_school(name):
+    with monitor.SCHOOLS_CSV.open(
+        "r", encoding="utf-8-sig", newline=""
+    ) as file:
+        for row in csv.DictReader(file):
+            if row.get("name") == name:
+                return row.get("region", "") or "其他"
+    return REGIONS.get(name, "其他")
 
 
 def import_existing_state():
@@ -218,7 +263,7 @@ def import_existing_state():
                 """,
                 (
                     school,
-                    REGIONS.get(school, "其他"),
+                    region_for_school(school),
                     ownership_for_school(school),
                     infer_category(title, ""),
                     title,
@@ -263,9 +308,11 @@ def refresh_item_classification():
         for row in rows:
             conn.execute(
                 """
-                UPDATE items SET ownership=?, category=?, relevance=? WHERE id=?
+                UPDATE items SET region=?, ownership=?, category=?, relevance=?
+                WHERE id=?
                 """,
                 (
+                    region_for_school(row["school"]),
                     ownership_for_school(row["school"]),
                     infer_category(row["title"], row["matched"]),
                     infer_relevance(row["title"], row["matched"]),
@@ -293,7 +340,7 @@ def save_items(items, checked_at, baseline):
             )
             values = (
                 item["school"],
-                REGIONS.get(item["school"], "其他"),
+                region_for_school(item["school"]),
                 ownership_for_school(item["school"]),
                 infer_category(item["title"], item["matched"]),
                 item["title"],
@@ -430,9 +477,22 @@ def read_school_rows():
 
 
 def write_school_rows(rows):
-    fields = ["enabled", "name", "ownership", "url", "notes"]
+    fields = [
+        "enabled",
+        "name",
+        "ownership",
+        "region",
+        "batch",
+        "url",
+        "notes",
+    ]
     with monitor.SCHOOLS_CSV.open("w", encoding="utf-8-sig", newline="") as file:
-        writer = csv.DictWriter(file, fieldnames=fields, extrasaction="ignore")
+        writer = csv.DictWriter(
+            file,
+            fieldnames=fields,
+            extrasaction="ignore",
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
 
@@ -575,7 +635,9 @@ class WebsiteHandler(SimpleHTTPRequestHandler):
     def get_schools(self):
         rows = read_school_rows()
         for row in rows:
-            row["region"] = REGIONS.get(row.get("name", ""), "其他")
+            row["region"] = row.get("region", "") or REGIONS.get(
+                row.get("name", ""), "其他"
+            )
             row["active"] = row.get("enabled", "").lower() not in {
                 "no",
                 "n",
@@ -592,18 +654,32 @@ class WebsiteHandler(SimpleHTTPRequestHandler):
         if not name or not monitor.usable_url(url):
             raise ValueError("请填写学校名称和完整官网网址")
         rows = read_school_rows()
+        old_name = monitor.clean_text(payload.get("old_name", ""))
+        existing = next(
+            (
+                row
+                for row in rows
+                if row.get("name") == (old_name or name)
+            ),
+            {},
+        )
         replacement = {
             "enabled": "yes" if payload.get("active", True) else "no",
             "name": name,
             "ownership": monitor.clean_text(
                 payload.get("ownership", "未分类")
             ),
+            "region": monitor.clean_text(
+                payload.get("region", existing.get("region", "其他"))
+            ),
+            "batch": monitor.clean_text(
+                payload.get("batch", existing.get("batch", "1"))
+            ),
             "url": url,
             "notes": monitor.clean_text(payload.get("notes", "网站添加")),
         }
         if replacement["ownership"] not in ("国立", "公立", "私立"):
             raise ValueError("大学类型必须是国立、公立或私立")
-        old_name = monitor.clean_text(payload.get("old_name", ""))
         replaced = False
         for index, row in enumerate(rows):
             if row.get("name") == (old_name or name):

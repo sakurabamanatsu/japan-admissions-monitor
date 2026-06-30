@@ -5,6 +5,7 @@ import smtplib
 from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import monitor_admissions as monitor
 
@@ -59,10 +60,16 @@ def save_json(path, payload):
 
 
 def infer_category(title, matched):
+    title_text = title.lower()
     text = f"{title} {matched}".lower()
-    if any(word in text for word in ("学部", "本科", "undergraduate")):
+    if any(
+        word in title_text for word in ("学部", "本科", "undergraduate")
+    ):
         return "学部"
-    if any(word in text for word in ("大学院", "修士", "博士", "graduate")):
+    if any(
+        word in title_text
+        for word in ("大学院", "研究科", "修士", "博士", "graduate")
+    ):
         return "大学院"
     if any(
         word in text
@@ -116,14 +123,43 @@ def is_relevant(title, matched):
     admission_in_title = any(term in title_text for term in admission_terms)
     guideline_in_title = any(term in title_text for term in guideline_terms)
     foreign_anywhere = any(term in combined for term in foreign_terms)
+    graduate_in_title = any(
+        term in title_text
+        for term in (
+            "大学院",
+            "研究科",
+            "修士",
+            "博士",
+            "graduate school",
+            "master",
+            "doctoral",
+        )
+    )
     excluded = any(
         term in title_text
-        for term in ("入試結果", "過去問題", "/result", "result.pdf", "archive")
+        for term in (
+            "入試結果",
+            "入試問題",
+            "過去問題",
+            "合格発表",
+            "合格者",
+            "受験番号",
+            "受入れの方針",
+            "アドミッション・ポリシー",
+            "admission policy",
+            "/result",
+            "result.pdf",
+            "archive",
+        )
     )
     if excluded and not guideline_in_title:
         return False
     return (foreign_in_title and admission_in_title) or (
         guideline_in_title and foreign_anywhere
+    ) or (
+        graduate_in_title
+        and foreign_anywhere
+        and (admission_in_title or guideline_in_title)
     )
 
 
@@ -159,25 +195,70 @@ def send_email(new_items):
     print("新内容通知邮件已发送。")
 
 
+def select_school_batch(all_schools, checked_at, last_batch=""):
+    mode = os.environ.get("MONITOR_BATCH", "all").strip().lower()
+    batch_count = int(os.environ.get("MONITOR_BATCH_COUNT", "4"))
+    if mode == "all":
+        return all_schools, "全部"
+    if mode == "auto":
+        try:
+            batch_number = int(last_batch) % batch_count + 1
+        except (TypeError, ValueError):
+            local = checked_at.astimezone(ZoneInfo("Asia/Tokyo"))
+            batch_number = (
+                (local.hour * 60 + local.minute) // 15
+            ) % batch_count + 1
+    else:
+        batch_number = int(mode)
+    selected = [
+        school
+        for school in all_schools
+        if int(school.get("batch") or 1) == batch_number
+    ]
+    return selected, str(batch_number)
+
+
 def main():
     state = load_state()
     initialized = bool(state.get("initialized"))
     known_items = state.setdefault("items", {})
-    schools = monitor.load_schools()
+    checked_at = utc_now()
+    all_schools = monitor.load_schools()
+    schools, active_batch = select_school_batch(
+        all_schools,
+        checked_at,
+        state.get("last_scheduled_batch", ""),
+    )
+    if os.environ.get("MONITOR_BATCH", "").strip().lower() == "auto":
+        state["last_scheduled_batch"] = active_batch
+    valid_school_names = {school["name"] for school in all_schools}
+    known_items = {
+        key: item
+        for key, item in known_items.items()
+        if item.get("school") in valid_school_names
+        and is_relevant(item.get("title", ""), item.get("matched", ""))
+    }
+    state["items"] = known_items
     ownership_by_school = {
         school["name"]: school.get("ownership", "未分类")
-        for school in schools
+        for school in all_schools
+    }
+    region_by_school = {
+        school["name"]: school.get("region", "其他")
+        for school in all_schools
     }
     for item in known_items.values():
         item["ownership"] = ownership_by_school.get(
             item.get("school", ""), "未分类"
         )
+        item["region"] = region_by_school.get(item.get("school", ""), "其他")
     keywords = monitor.load_keywords()
-    checked_at = utc_now()
     errors = []
     new_items = []
 
-    print(f"开始云端检查 {len(schools)} 所学校。")
+    print(
+        f"开始云端检查第 {active_batch} 批，共 {len(schools)} 所学校。"
+    )
     for school in schools:
         print(f"- {school['name']}", flush=True)
         items, school_errors = monitor.collect_school(school, keywords)
@@ -192,13 +273,20 @@ def main():
             old = known_items.get(key)
             first_seen = old.get("first_seen_at") if old else checked_at.isoformat()
             changed = old is not None and old.get("title") != item["title"]
+            content_changed = bool(
+                old
+                and item.get("content_hash")
+                and old.get("content_hash") != item.get("content_hash")
+            )
             newly_detected = (
-                initialized and school_was_known and (old is None or changed)
+                initialized
+                and school_was_known
+                and (old is None or changed or content_changed)
             )
             record = {
                 "school": item["school"],
                 "ownership": school.get("ownership", "未分类"),
-                "region": REGIONS.get(item["school"], "其他"),
+                "region": school.get("region", "其他"),
                 "category": infer_category(item["title"], item["matched"]),
                 "title": item["title"],
                 "url": item["url"],
@@ -207,6 +295,8 @@ def main():
                 "is_pdf": item["url"].lower().split("?", 1)[0].endswith(".pdf"),
                 "first_seen_at": first_seen,
                 "last_seen_at": checked_at.isoformat(),
+                "content_hash": item.get("content_hash")
+                or old.get("content_hash", "") if old else item.get("content_hash", ""),
                 "is_new_until": (
                     (checked_at + timedelta(days=7)).isoformat()
                     if newly_detected
@@ -221,8 +311,11 @@ def main():
     state["last_run"] = {
         "checked_at": checked_at.isoformat(),
         "schools": len(schools),
+        "batch": active_batch,
+        "total_schools": len(all_schools),
         "results": len(known_items),
         "errors": len(errors),
+        "error_details": errors[:30],
     }
     save_json(STATE_FILE, state)
 
@@ -237,12 +330,14 @@ def main():
         rows.append(row)
     rows.sort(key=lambda row: row["first_seen_at"], reverse=True)
 
-    unique_schools = {school["name"] for school in schools}
+    unique_schools = {school["name"] for school in all_schools}
     payload = {
         "generated_at": checked_at.isoformat(),
         "interval_minutes": 15,
-        "schedule_text": "每日 08:30–17:45，每 15 分钟检查",
+        "schedule_text": "每日 08:30–17:45 分批检查；每所大学约每小时一次",
+        "active_batch": active_batch,
         "last_error": f"{len(errors)} 个网页访问失败" if errors else "",
+        "error_details": errors[:30],
         "counts": {
             "total": len(rows),
             "new_count": sum(bool(row["is_new"]) for row in rows),
@@ -254,10 +349,11 @@ def main():
                 "name": school["name"],
                 "ownership": school.get("ownership", "未分类"),
                 "url": school["url"],
-                "region": REGIONS.get(school["name"], "其他"),
+                "region": school.get("region", "其他"),
+                "batch": school.get("batch", ""),
                 "active": True,
             }
-            for school in schools
+            for school in all_schools
         ],
         "items": rows,
     }
@@ -267,6 +363,8 @@ def main():
         f"完成：展示 {len(rows)} 条，新增 {len(new_items)} 条，"
         f"错误 {len(errors)} 个。"
     )
+    for error in errors[:30]:
+        print(f"访问失败：{error}")
 
 
 if __name__ == "__main__":

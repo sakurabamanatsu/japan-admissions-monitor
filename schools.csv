@@ -1,26 +1,110 @@
-﻿enabled,name,ownership,url,notes
-yes,东京大学,国立,https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html,外国学校卒業学生特別選考页面
-no,京都大学,国立,https://www.kyoto-u.ac.jp/ja/admissions/undergrad,请确认这是你想监视的招生页面
-yes,大阪大学,国立,https://www.osaka-u.ac.jp/ja/admissions/faculty,请确认这是你想监视的招生页面
-yes,名古屋大学,国立,https://www.nagoya-u.ac.jp/admissions/,请确认这是你想监视的招生页面
-yes,东北大学,国立,https://admissions.tohoku.ac.jp/ja/,请确认这是你想监视的招生页面
-no,北海道大学,国立,https://www.hokudai.ac.jp/admission/,官网响应较慢；找到更具体页面后再改成 yes
-yes,早稻田大学,私立,https://www.waseda.jp/inst/admission/undergraduate/system/international/,外国学生学部入试官方页面
-yes,庆应义塾大学,私立,https://www.keio.ac.jp/ja/admissions/,请确认这是你想监视的招生页面
-yes,立命馆大学,私立,https://admission.ritsumei.ac.jp/admission/international/guidelines.html,外国人留学生入学试验要项官方页面
-yes,APU立命馆亚洲太平洋大学,私立,https://admissions.apu.ac.jp/,请确认这是你想监视的招生页面
-yes,关西大学,私立,https://www.nyusi.kansai-u.ac.jp/,手动添加
-yes,九州大学,国立,https://www.kyushu-u.ac.jp/ja/admission,手动添加
-yes,東洋大学,私立,https://www.toyo.ac.jp/nyushi,手动添加
-yes,中央大学,私立,https://www.chuo-u.ac.jp/admission,手动添加
-yes,立教大学,私立,https://www.rikkyo.ac.jp/admissions,手动添加
-yes,日本大学,私立,https://www.nihon-u.ac.jp/admission_info,手动添加
-yes,法政大学,私立,https://nyushi.hosei.ac.jp/,手动添加
-yes,駒沢大学,私立,https://think.komazawa-u.ac.jp/,手动添加
-yes,東海大学,私立,https://www.u-tokai.ac.jp/examination-admissions/,手动添加
-yes,名古屋大学,国立,https://www.nagoya-u.ac.jp/admissions/exam/,手动添加
-yes,一橋大学,国立,https://juken.hit-u.ac.jp/admission/info/guidelines/index.html,手动添加
-yes,青山学院大学,私立,https://www.aoyama.ac.jp/admission/,手动添加
-yes,同志社大学,私立,https://www.doshisha.ac.jp/admissions_undergrad/index.html,手动添加
-yes,専修大学,私立,https://www.senshu-u.ac.jp/admission/admiss_info.html,手动添加
-yes,龍谷大学,私立,https://www.ryukoku.ac.jp/admission/nyushi/,手动添加
+﻿enabled,name,ownership,region,batch,url,notes
+yes,东京大学,国立,关东,1,https://www.u-tokyo.ac.jp/ja/admissions/undergraduate/e01_02_04.html,Excel导入；外国人留学生入試ページ；外国学校卒業学生特別選考（第1種）ページ。；确认日 2026-06-29
+yes,京都大学,国立,中部,2,https://www.kyoto-u.ac.jp/ja/international/students1/study1/undergraduate/addmissions,Excel导入；外国人留学生入試ページ；外国人留学生のための学部入学案内ページ。学部別の私費外国人留学生特別選抜ページもあり。；确认日 2026-06-29
+yes,大阪大学,国立,关西,3,https://www.osaka-u.ac.jp/ja/admissions/faculty/expense,Excel导入；外国人留学生入試ページ；私費外国人留学生特別入試の専用ページ。；确认日 2026-06-29
+yes,名古屋大学,国立,中部,4,https://www.nagoya-u.ac.jp/admissions/exam/us-exam/cat2/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の専用ページ。；确认日 2026-06-29
+yes,东北大学,国立,东北,1,https://admissions.tohoku.ac.jp/ja/entrance-info/undergraduate-info/admissions_sp/,Excel导入；外国人留学生入試ページ；特別選抜ページ内に私費外国人留学生入試あり。；确认日 2026-06-29
+yes,北海道大学,国立,北海道,2,https://www.hokudai.ac.jp/admission/admission-info/8.html,Excel导入；外国人留学生入試ページ；令和8年度私費外国人留学生入試（学部）募集要項の公式掲載ページ。；确认日 2026-06-29
+yes,早稻田大学,私立,关东,3,https://www.waseda.jp/inst/admission/undergraduate/system/international/,外国学生学部入试官方页面
+yes,庆应义塾大学,私立,关东,4,https://www.keio.ac.jp/ja/admissions/,请确认这是你想监视的招生页面
+yes,立命馆大学,私立,关西,1,https://admission.ritsumei.ac.jp/admission/international/guidelines.html,外国人留学生入学试验要项官方页面
+yes,APU立命馆亚洲太平洋大学,私立,九州,2,https://admissions.apu.ac.jp/,请确认这是你想监视的招生页面
+yes,关西大学,私立,关西,3,https://www.nyusi.kansai-u.ac.jp/,手动添加
+yes,九州大学,国立,九州,4,https://www.kyushu-u.ac.jp/ja/admission/faculty/foreign/,Excel导入；外国人留学生入試ページ；外国人留学生入試の専用ページ。；确认日 2026-06-29
+yes,東洋大学,私立,关东,1,https://www.toyo.ac.jp/nyushi,手动添加
+yes,中央大学,私立,关东,2,https://www.chuo-u.ac.jp/admission,手动添加
+yes,立教大学,私立,关东,3,https://www.rikkyo.ac.jp/admissions,手动添加
+yes,日本大学,私立,关东,4,https://www.nihon-u.ac.jp/admission_info,手动添加
+yes,法政大学,私立,关东,1,https://nyushi.hosei.ac.jp/,手动添加
+yes,駒沢大学,私立,关东,2,https://think.komazawa-u.ac.jp/,手动添加
+yes,東海大学,私立,关东,3,https://www.u-tokai.ac.jp/examination-admissions/,手动添加
+yes,一橋大学,国立,关东,4,https://juken.hit-u.ac.jp/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試情報総合サイトを記載。；确认日 2026-06-29
+yes,青山学院大学,私立,关东,1,https://www.aoyama.ac.jp/admission/,手动添加
+yes,同志社大学,私立,关西,2,https://www.doshisha.ac.jp/admissions_undergrad/index.html,手动添加
+yes,専修大学,私立,关东,3,https://www.senshu-u.ac.jp/admission/admiss_info.html,手动添加
+yes,龍谷大学,私立,关西,4,https://www.ryukoku.ac.jp/admission/nyushi/,手动添加
+yes,小樽商科大学,国立,北海道,1,https://nyushi.otaru-uc.ac.jp/examination/guideline/,Excel导入；入試情報/募集要項ページ；外国人留学生関連の募集要項は大学院等で確認。学部の専用ページは未確認のため、募集要項ページを記載。；确认日 2026-06-29
+yes,北海道教育大学,国立,北海道,2,https://www.hokkyodai.ac.jp/exam/faculties/information/20251127.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試を含む募集要項掲載ページ。；确认日 2026-06-29
+yes,室蘭工業大学,国立,北海道,3,https://muroran-it.ac.jp/entrance/isee/,Excel导入；外国人留学生入試ページ；外国人留学生入試の専用ページ。；确认日 2026-06-29
+yes,北見工業大学,国立,北海道,4,https://koho5.office.kitami-it.ac.jp/admission/undergraduate-admissions/,Excel导入；入試情報/募集要項ページ；総合型選抜（私費外国人留学生入試）を含む学部入試情報ページ。；确认日 2026-06-29
+yes,旭川医科大学,国立,北海道,1,https://www.asahikawa-med.ac.jp/admission/exam/faculty_app_guidebook/,Excel导入；入試情報/募集要項ページ；医学部募集要項ページ。私費外国人留学生選抜を含む募集要項掲載先として記載。；确认日 2026-06-29
+yes,弘前大学,国立,东北,2,https://nyushi.hirosaki-u.ac.jp/news/faculty/16354/,Excel导入；外国人留学生入試ページ；私費外国人留学生入試の募集要項掲載ページ。；确认日 2026-06-29
+yes,岩手大学,国立,东北,3,https://www.iwate-u.ac.jp/admission/undergraduate/info.html,Excel导入；入試情報/募集要項ページ；学部入試情報ページ。私費外国人留学生選抜を含む募集要項掲載先。；确认日 2026-06-29
+yes,秋田大学,国立,东北,4,https://www.akita-u.ac.jp/admission/eventa/item_pro4_689.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試の募集要項掲載ページ。；确认日 2026-06-29
+yes,山形大学,国立,东北,1,https://www.yamagata-u.ac.jp/jp/entrance/faculty/guidelines/r08_5/,Excel导入；外国人留学生入試ページ；私費外国人留学生入試募集要項ページ。；确认日 2026-06-29
+yes,福島大学,国立,东北,2,https://nyushi.adb.fukushima-u.ac.jp/yoko.html,Excel导入；入試情報/募集要項ページ；最新の私費外国人留学生専用ページを確認できなかったため、募集要項総合ページを記載。；确认日 2026-06-29
+yes,茨城大学,国立,关东,3,https://www.ibaraki.ac.jp/admission/application/2026/index.html,Excel导入；外国人留学生入試ページ；令和8年度私費外国人留学生選抜の募集要項掲載ページ。；确认日 2026-06-29
+yes,宇都宮大学,国立,关东,4,https://admission.utsunomiya-u.ac.jp/entrance-exam-info/faculty-entrance-exam/international-student/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の専用ページ。；确认日 2026-06-29
+yes,群馬大学,国立,关东,1,https://www.gunma-u.ac.jp/admission/g2107/g30174,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の募集要項ページ。；确认日 2026-06-29
+yes,埼玉大学,国立,关东,2,https://www.saitama-u.ac.jp/international/admission/undergraduate/,Excel导入；外国人留学生入試ページ；留学生向け学部入試ページ。募集要項は入試アーカイブにも掲載。；确认日 2026-06-29
+yes,千葉大学,国立,关东,3,https://www.chiba-u.ac.jp/admissions/gakubu/special.html,Excel导入；入試情報/募集要項ページ；特別選抜ページ。私費外国人留学生選抜を含む可能性があるため記載。；确认日 2026-06-29
+yes,横浜国立大学,国立,关东,4,https://global.ynu.ac.jp/admissions/college_outline/,Excel导入；外国人留学生入試ページ；留学生のための学部入試概要ページ。；确认日 2026-06-29
+yes,山梨大学,国立,中部,1,https://www.yamanashi.ac.jp/admission,Excel导入；入試情報/募集要項ページ；募集要項ページ。私費外国人留学生選抜の要項掲載時期が案内されているため記載。；确认日 2026-06-29
+yes,信州大学,国立,中部,2,https://www.shinshu-u.ac.jp/admission/,Excel导入；外国人留学生入試ページ/PDF；私費外国人留学生入試募集要項PDFを記載。；确认日 2026-06-29
+yes,新潟大学,国立,中部,3,https://www.niigata-u.ac.jp/admissions/faculty/other/foreign-students/,Excel导入；外国人留学生入試ページ；私費外国人留学生特別選抜の専用ページ。；确认日 2026-06-29
+yes,筑波大学,国立,关东,4,https://ac.tsukuba.ac.jp/apply/application-guidelines/,Excel导入；入試情報/募集要項ページ；特別選抜（私費外国人留学生等）を含む募集要項総合ページ。；确认日 2026-06-29
+yes,総合研究大学院大学,国立,关东,1,https://www.soken.ac.jp/admission/pvscholarship/,Excel导入；外国人留学生入試ページ；私費留学生として受験する方向けページ。大学院大学。；确认日 2026-06-29
+yes,お茶の水女子大学,国立,关东,2,https://www.ao.ocha.ac.jp/news/d016934.html,Excel导入；外国人留学生入試ページ；私費外国人留学生特別選抜の公式掲載ページ。；确认日 2026-06-29
+yes,電気通信大学,国立,关东,3,https://www.uec.ac.jp/education/undergraduate/admission/exam_international.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の専用ページ。；确认日 2026-06-29
+yes,東京外国語大学,国立,关东,4,https://www.tufs.ac.jp/admission/exam/guideline/intl-students-1.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の専用ページ。；确认日 2026-06-29
+yes,東京学芸大学,国立,关东,1,https://www.u-gakugei.ac.jp/nyushi/gakubu/,Excel导入；入試情報/募集要項ページ；学部入試情報ページ。私費外国人留学生関連の募集要項掲載先として記載。；确认日 2026-06-29
+yes,東京藝術大学,国立,关东,2,https://admissions.geidai.ac.jp/international-students/privately-financed/,Excel导入；外国人留学生入試ページ；私費留学生向けページ。；确认日 2026-06-29
+yes,東京科学大学,国立,关东,3,https://admissions.isct.ac.jp/ja,Excel导入；外国人留学生入試ページ；東京科学大学の理工学系・私費外国人留学生特別選抜ページ。；确认日 2026-06-29
+yes,東京農工大学,国立,关东,4,https://www.tuat.ac.jp/admission/nyushi_gakubu/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、学部入試総合ページを記載。；确认日 2026-06-29
+yes,政策研究大学院大学,国立,关东,1,https://www.grips.ac.jp/jp/admissions/,Excel导入；入試総合ページ；大学院大学。外国人留学生専用入試ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,東京海洋大学,国立,关东,2,https://www.kaiyodai.ac.jp/entranceexamination/undergraduate/requirements/,Excel导入；入試情報/募集要項ページ；募集要項ページ。私費外国人留学生特別選抜の掲載先として記載。；确认日 2026-06-29
+yes,富山大学,国立,中部,3,https://www.u-toyama.ac.jp/e-book/r08-shihi/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の募集要項電子ブックページ。；确认日 2026-06-29
+yes,金沢大学,国立,中部,4,https://www.kanazawa-u.ac.jp/admission/boshuyoko/,Excel导入；入試情報/募集要項ページ；募集要項ページ。私費外国人留学生入試の要項掲載先として記載。；确认日 2026-06-29
+yes,福井大学,国立,中部,1,https://www.u-fukui.ac.jp/exams/105980/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜の募集要項掲載ページ。；确认日 2026-06-29
+yes,岐阜大学,国立,中部,2,https://www.gifu-u.ac.jp/admission/f_applicant/guide.html,Excel导入；入試情報/募集要項ページ；募集要項ページ。私費外国人留学生入試関連の掲載先。；确认日 2026-06-29
+yes,静岡大学,国立,中部,3,https://www.shizuoka.ac.jp/nyushi/guide/boshu/document/08_yoko_ryugakusei.pdf,Excel导入；外国人留学生入試ページ/PDF；私費外国人留学生入試募集要項PDFを記載。；确认日 2026-06-29
+yes,愛知教育大学,国立,中部,4,https://www.aichi-edu.ac.jp/exam/faculty/info/foreign/index.html,Excel导入；外国人留学生入試ページ；外国人留学生対象の総合型選抜ページ。；确认日 2026-06-29
+yes,名古屋工業大学,国立,中部,1,https://www.nitech.ac.jp/examination/gakubu/request.html,Excel导入；入試情報/募集要項ページ；募集要項・資料請求ページ。私費外国人留学生入試要項の掲載先として記載。；确认日 2026-06-29
+yes,三重大学,国立,关西,2,https://www.mie-u.ac.jp/exam/faculty/guidelines/post-6.html,Excel导入；外国人留学生入試ページ；私費外国人留学生特別選抜の募集要項ページ。；确认日 2026-06-29
+yes,豊橋技術科学大学,国立,中部,3,https://www.tut.ac.jp/exam/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,北陸先端科学技術大学院大学,国立,中部,4,https://www.jaist.ac.jp/admissions/,Excel导入；入試総合ページ；大学院大学。外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,滋賀大学,国立,关西,1,https://www.shiga-u.ac.jp/admission/examination_info/exam_eco/exam_eco_recommen_international/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,京都工芸繊維大学,国立,关西,2,https://www.kit.ac.jp/test_index/school_news/undergraduate/type_abroad/,Excel导入；外国人留学生入試ページ；私費外国人留学生入試ページ。；确认日 2026-06-29
+yes,大阪教育大学,国立,关西,3,https://osaka-kyoiku.ac.jp/admission/department/gakubu_shihiryu.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試ページ。；确认日 2026-06-29
+yes,神戸大学,国立,关西,4,https://www.econ.kobe-u.ac.jp/admission-foreign-ug,Excel导入；外国人留学生入試ページ；外国人特別学生選抜の学部別ページ。神戸大学は学部別に情報が分かれるため代表例として記載。；确认日 2026-06-29
+yes,奈良教育大学,国立,关西,1,https://www.nara-edu.ac.jp/admissions/,Excel导入；入試総合ページ；最新の私費外国人留学生専用ページを確認できなかったため、入試総合ページを記載。；确认日 2026-06-29
+yes,奈良女子大学,国立,关西,2,https://www.nara-wu.ac.jp/nyusi/sihiryugakuseiyoko.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試ページ。；确认日 2026-06-29
+yes,和歌山大学,国立,关西,3,https://www.wakayama-u.ac.jp/eco/admission/faculty/foreign-student-admission.html,Excel导入；外国人留学生入試ページ；外国人留学生入試の学部別ページ。学部により掲載先が異なる可能性あり。；确认日 2026-06-29
+yes,奈良先端科学技術大学院大学,国立,关西,4,https://www.naist.jp/visitor/international.html,Excel导入；外国人留学生向けページ；留学生向け案内ページ。大学院大学のため入試情報は各募集要項を要確認。；确认日 2026-06-29
+yes,鳥取大学,国立,其他,1,https://www.admissions.adm.tottori-u.ac.jp/wp-content/uploads/2025/10/r8_shihi_youkou.pdf,Excel导入；外国人留学生入試ページ/PDF；私費外国人留学生選抜の募集要項PDF。；确认日 2026-06-29
+yes,島根大学,国立,其他,2,https://www.shimane-u.ac.jp/_files/00388214/20250625_00.pdf,Excel导入；外国人留学生入試ページ/PDF；私費外国人留学生入試の募集要項PDF。；确认日 2026-06-29
+yes,岡山大学,国立,其他,3,https://www.okayama-u.ac.jp/tp/prospective/nyusig1_index.html,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,広島大学,国立,其他,4,https://www.hiroshima-u.ac.jp/nyushi/yoko_doga/yoko,Excel导入；入試情報/募集要項ページ；募集要項ページ。外国人留学生型を含む入試情報掲載先。；确认日 2026-06-29
+yes,山口大学,国立,其他,1,https://www.yamaguchi-u.ac.jp/nyushi/yoko/shihi/index.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試の専用ページ。学部系統により別ページあり。；确认日 2026-06-29
+yes,徳島大学,国立,其他,2,https://www.tokushima-u.ac.jp/admission/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,香川大学,国立,其他,3,https://www.kagawa-u.ac.jp/admission/entrance_exam/25350/privately/,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,愛媛大学,国立,其他,4,https://www.ehime-u.ac.jp/wp-content/uploads/2025/09/2026_sihiryu_youkou.pdf,Excel导入；外国人留学生入試ページ/PDF；私費外国人留学生入試の募集要項PDF。；确认日 2026-06-29
+yes,高知大学,国立,其他,1,https://nyusi.kochi-u.ac.jp/nyushi/admissions,Excel导入；入試情報/募集要項ページ；募集人員・入試日程・募集要項ページ。私費外国人留学生入試の掲載先。；确认日 2026-06-29
+yes,鳴門教育大学,国立,其他,2,https://www.naruto-u.ac.jp/admission/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,九州工業大学,国立,九州,3,https://www.kyutech.ac.jp/examination/gs-expense.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,福岡教育大学,国立,九州,4,https://www.fukuoka-edu.ac.jp/admissions/information/abroad.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,佐賀大学,国立,九州,1,https://www.sao.saga-u.ac.jp/gakubu/shihiryuugaku.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試ページ。；确认日 2026-06-29
+yes,長崎大学,国立,九州,2,https://www.liaison.nagasaki-u.ac.jp/?page_id=162,Excel导入；外国人留学生向け入試情報ページ；留学生向け入試情報ページ。学部により個別ページあり。；确认日 2026-06-29
+yes,熊本大学,国立,九州,3,https://www.kumamoto-u.ac.jp/nyuushi,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,大分大学,国立,九州,4,https://www.oita-u.ac.jp/06nyushi/gakubu/gakubu-tokubetsu04.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,宮崎大学,国立,九州,1,https://www.miyazaki-u.ac.jp/exam/department-exam/other/shihi.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,鹿児島大学,国立,九州,2,https://www.kagoshima-u.ac.jp/exam/R08-shihi.html,Excel导入；外国人留学生入試ページ；私費外国人留学生入試の募集要項ページ。；确认日 2026-06-29
+yes,琉球大学,国立,九州,3,https://www.u-ryukyu.ac.jp/admissions/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,札幌医科大学,公立,北海道,4,https://web.sapmed.ac.jp/jp/public/exam/oq0gnp00000000tk.html,Excel导入；外国人留学生入試ページ；医学部私費外国人留学生選抜の募集要項ページ。；确认日 2026-06-29
+yes,札幌市立大学,公立,北海道,1,https://www.scu.ac.jp/admission/news/%E4%BB%A4%E5%92%8C8%E5%B9%B4%E5%BA%A6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E5%AD%A6%E9%83%A8%E7%89%B9%E5%88%A5%E9%81%B8%E6%8A%9C%EF%BC%88%E7%A4%BE%E4%BC%9A%E4%BA%BA%E3%83%BB%E7%A7%81%E8%B2%BB%E5%A4%96/,Excel导入；外国人留学生入試ページ；デザイン学部特別選抜（私費外国人留学生等）ページ。；确认日 2026-06-29
+yes,公立千歳科学技術大学,公立,北海道,2,https://www.chitose.ac.jp/juken,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,福島県立医科大学,公立,东北,3,https://www.fmu.ac.jp/admission/medicine/guidelines.html,Excel导入；入試情報/募集要項ページ；医学部募集要項ページ。私費外国人留学生選抜を含む掲載先として記載。；确认日 2026-06-29
+yes,青森公立大学,公立,东北,4,https://www.nebuta.ac.jp/admission/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,会津大学,公立,东北,1,https://u-aizu.ac.jp/materials/,Excel导入；入試情報/募集要項ページ；募集要項ページ。外国人留学生関連の要項掲載先として記載。；确认日 2026-06-29
+yes,宮城大学,公立,东北,2,https://www.myu.ac.jp/admissions/colleges/guidelines/,Excel导入；入試情報/募集要項ページ；募集要項ページ。私費外国人留学生選抜を含む掲載先として記載。；确认日 2026-06-29
+yes,岩手県立大学,公立,东北,3,https://www.iwate-pu.ac.jp/exam/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,秋田県立大学,公立,东北,4,https://www.akita-pu.ac.jp/exam/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,高崎経済大学,公立,关东,1,https://www.tcue.ac.jp/leafpage/312.html,Excel导入；外国人留学生入試ページ；私費外国人留学生選抜ページ。；确认日 2026-06-29
+yes,横浜市立大学,公立,关东,2,https://www.yokohama-cu.ac.jp/admissions/admissions/undergraduate_admissions.html,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、学部入試総合ページを記載。；确认日 2026-06-29
+yes,山梨県立大学,公立,中部,3,https://www.yamanashi-ken.ac.jp/admission/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,新潟県立大学,公立,中部,4,https://www.unii.ac.jp/admissions/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,長岡造形大学,公立,中部,1,https://www.nagaoka-id.ac.jp/admission/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,長野大学,公立,中部,2,https://www.nagano.ac.jp/admissions/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,長野県立大学,公立,中部,3,https://www.u-nagano.ac.jp/admissions/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,東京都立大学,公立,关东,4,https://www.tmu.ac.jp/entrance.html,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29
+yes,名古屋市立大学,公立,中部,1,https://www.nagoya-cu.ac.jp/admissions/,Excel导入；入試総合ページ；外国人留学生専用ページは未確認のため、入試総合ページを記載。；确认日 2026-06-29

@@ -32,6 +32,11 @@ DEFAULT_KEYWORDS = [
     "留学生入試",
     "外国人留学生入試",
     "外国学校卒業",
+    "外国人留学生大学院入試",
+    "大学院入試",
+    "研究科",
+    "修士",
+    "博士",
     "募集要項",
     "入試要項",
     "入学試験要項",
@@ -42,6 +47,11 @@ DEFAULT_KEYWORDS = [
     "international students",
     "international student",
     "international admission",
+    "international graduate",
+    "graduate admission",
+    "graduate school",
+    "master's",
+    "doctoral",
     "ryugakusei",
 ]
 
@@ -53,9 +63,16 @@ CRAWL_HINTS = [
     "要項",
     "留学生",
     "外国人",
+    "大学院",
+    "研究科",
+    "修士",
+    "博士",
     "admission",
     "applicant",
     "international",
+    "graduate",
+    "master",
+    "doctoral",
 ]
 
 
@@ -210,6 +227,10 @@ def link_priority(text, keywords):
         "international student",
         "international applicant",
         "international/",
+        "大学院",
+        "研究科",
+        "graduate school",
+        "graduate admission",
     )
     guideline_hints = (
         "募集要項",
@@ -250,6 +271,8 @@ def pdf_item(school, url, source_text, keywords):
     if not hits:
         return None
     title = clean_text(source_text) or "PDF"
+    if title.startswith("学校设置的网址"):
+        title = f"{school['name']} 外国人留学生入試募集要項（PDF）"
     if "ryugakusei-youkou" in url.lower():
         year_match = re.search(r"/(20\d{2})/", url)
         year = f"{year_match.group(1)}年度 " if year_match else ""
@@ -267,8 +290,10 @@ def item_key(school, url):
     return hashlib.sha256(f"{school}\n{url}".encode("utf-8")).hexdigest()
 
 
-def item_fingerprint(title, url):
-    return hashlib.sha256(f"{title}\n{url}".encode("utf-8")).hexdigest()
+def item_fingerprint(title, url, content_hash=""):
+    return hashlib.sha256(
+        f"{title}\n{url}\n{content_hash}".encode("utf-8")
+    ).hexdigest()
 
 
 def load_schools():
@@ -289,8 +314,18 @@ def load_schools():
             ownership = clean_text(row.get("ownership", ""))
             if ownership not in ("国立", "公立", "私立"):
                 ownership = "未分类"
+            region = clean_text(row.get("region", "")) or "其他"
+            batch = clean_text(row.get("batch", ""))
+            notes = clean_text(row.get("notes", ""))
             schools.append(
-                {"name": name, "ownership": ownership, "url": url}
+                {
+                    "name": name,
+                    "ownership": ownership,
+                    "region": region,
+                    "batch": batch,
+                    "notes": notes,
+                    "url": url,
+                }
             )
     return schools
 
@@ -389,7 +424,10 @@ def collect_school(
     errors = []
     visited = set()
     queued = {school["url"]}
-    queue = [(0, 0, school["url"], 0, "学校设置的网址")]
+    source_note = clean_text(
+        f"学校设置的网址 {school.get('notes', '')}"
+    )
+    queue = [(0, 0, school["url"], 0, source_note)]
     sequence = 0
 
     while queue and len(visited) < max_pages:
@@ -409,6 +447,7 @@ def collect_school(
             item = pdf_item(school, final_url, source_text, keywords)
             if item:
                 item["source"] = url
+                item["content_hash"] = hashlib.sha256(raw).hexdigest()
                 found.append(item)
             continue
 
@@ -563,7 +602,11 @@ def main():
         all_errors.extend([f"{school['name']}: {e}" for e in errors])
         for item in items:
             key = item_key(item["school"], item["url"])
-            fingerprint = item_fingerprint(item["title"], item["url"])
+            fingerprint = item_fingerprint(
+                item["title"],
+                item["url"],
+                item.get("content_hash", ""),
+            )
             old = state["items"].get(key)
             is_new = (not first_run) and (
                 old is None or old.get("fingerprint") != fingerprint

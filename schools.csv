@@ -12,7 +12,7 @@ yes,立命馆大学,私立,关西,1,https://admission.ritsumei.ac.jp/admission/i
 yes,APU立命馆亚洲太平洋大学,私立,九州,2,https://admissions.apu.ac.jp/,请确认这是你想监视的招生页面
 yes,关西大学,私立,关西,3,https://www.nyusi.kansai-u.ac.jp/,手动添加
 yes,九州大学,国立,九州,4,https://www.kyushu-u.ac.jp/ja/admission/faculty/foreign/,Excel导入；外国人留学生入試ページ；外国人留学生入試の専用ページ。；确认日 2026-06-29
-yes,東洋大学,私立,关东,1,https://www.toyo.ac.jp/nyushi,手动添加
+yes,東洋大学,私立,关东,1,https://www.toyo.ac.jp/nyushi/admission/admission-data/,手动添加
 yes,中央大学,私立,关东,2,https://www.chuo-u.ac.jp/admission,手动添加
 yes,立教大学,私立,关东,3,https://www.rikkyo.ac.jp/admissions,手动添加
 yes,日本大学,私立,关东,4,https://www.nihon-u.ac.jp/admission_info,手动添加

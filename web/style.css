@@ -91,7 +91,7 @@ select, .form-grid input {
 .search-box input { width: 100%; border: 0; outline: 0; color: var(--ink); }
 .result-list { background: white; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
 .result-item {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) 118px;
+  display: grid; grid-template-columns: 40px minmax(0, 1fr);
   gap: 14px; padding: 18px; border-bottom: 1px solid var(--line); align-items: start;
 }
 .result-item:last-child { border-bottom: 0; }
@@ -100,14 +100,24 @@ select, .form-grid input {
   background: #eaf2ee; color: var(--green); font-size: 11px; font-weight: 800;
 }
 .file-icon.pdf { background: #fae8e6; color: var(--red); }
-.item-title { color: var(--ink); text-decoration: none; font-weight: 700; line-height: 1.45; }
+.item-content { min-width: 0; }
+.item-heading {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 7px;
+}
+.item-school {
+  color: var(--green-dark); font-size: 17px; font-weight: 800; line-height: 1.35;
+}
+.item-time { flex: 0 0 auto; color: var(--muted); font-size: 12px; }
+.item-title {
+  color: var(--ink); text-decoration: none; font-size: 14px;
+  font-weight: 650; line-height: 1.5;
+}
 .item-title:hover { color: var(--green); text-decoration: underline; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 9px 0; }
 .tag { background: var(--soft); color: #4b5a53; border-radius: 4px; padding: 3px 7px; font-size: 11px; }
 .tag.new { background: #fff0d4; color: #8a5900; }
 .item-meta { color: var(--muted); font-size: 12px; }
-.item-side { text-align: right; color: var(--muted); font-size: 12px; }
-.item-side strong { color: var(--ink); display: block; margin-bottom: 5px; }
 .empty-state { text-align: center; padding: 80px 20px; color: var(--muted); }
 .empty-state strong, .empty-state span { display: block; }
 .empty-state strong { color: var(--ink); margin-bottom: 7px; }
@@ -156,6 +166,6 @@ dialog::backdrop { background: #14211d80; }
   .metric:nth-child(3) { border-left: 0; }
   .filters { grid-template-columns: 1fr 1fr; }
   .result-item { grid-template-columns: 36px minmax(0, 1fr); }
-  .item-side { grid-column: 2; text-align: left; }
+  .item-heading { align-items: flex-start; flex-direction: column; gap: 2px; }
   .form-grid { grid-template-columns: 1fr; }
 }

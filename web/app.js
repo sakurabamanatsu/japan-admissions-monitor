@@ -125,7 +125,11 @@ function renderItems(items) {
   $("#resultList").innerHTML = items.map((item) => `
     <article class="result-item">
       <div class="file-icon ${item.is_pdf ? "pdf" : ""}">${item.is_pdf ? "PDF" : "WEB"}</div>
-      <div>
+      <div class="item-content">
+        <div class="item-heading">
+          <strong class="item-school">${escapeHtml(item.school)}</strong>
+          <span class="item-time">${formatDate(item.first_seen_at)}</span>
+        </div>
         <a class="item-title" href="${escapeHtml(item.url)}" target="_blank" rel="noopener"
            data-id="${item.id}">${escapeHtml(item.title)}</a>
         <div class="tags">
@@ -136,10 +140,6 @@ function renderItems(items) {
           <span class="tag">${escapeHtml(item.region)}</span>
         </div>
         <div class="item-meta">${escapeHtml(item.matched || "历史监控记录")}</div>
-      </div>
-      <div class="item-side">
-        <strong>${escapeHtml(item.school)}</strong>
-        <span>${formatDate(item.first_seen_at)}</span>
       </div>
     </article>
   `).join("");

@@ -201,23 +201,6 @@
       "title": "2027年度 外国人留学生対象入学試験 募集要項 https://www.keio.ac.jp/fixed-files/ryugaku_youkou.pdf",
       "url": "https://www.keio.ac.jp/fixed-files/ryugaku_youkou.pdf"
     },
-    "0af48805d9d2441e0f09ac609d97c8bc131f83b2c5ecafc6b4eed7e433974b07": {
-      "category": "募集要项",
-      "content_hash": "a34d328d72ad4a2361eb93d82f5cbd5e6981dcbbc39dc8b2371a6283e1ac0bfd",
-      "first_seen_at": "2026-06-30T11:26:55+00:00",
-      "is_new_until": "2026-07-07T11:26:55+00:00",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T11:26:55+00:00",
-      "matched": "外国人留学生 / 募集要項",
-      "ownership": "国立",
-      "pdf_text_chars": 1867,
-      "pdf_year_status": "target",
-      "region": "关东",
-      "school": "東京海洋大学",
-      "source": "https://www.kaiyodai.ac.jp/international/upload-file/fc751f865a3d77f072e75204a1981dbf3987db82.pdf",
-      "title": "募集要項（日本語） https://www.kaiyodai.ac.jp/international/upload-file/fc751f865a3d77f072e75204a1981dbf3987db82.pdf",
-      "url": "https://www.kaiyodai.ac.jp/international/upload-file/fc751f865a3d77f072e75204a1981dbf3987db82.pdf"
-    },
     "10d02bee6d0eb543f4d44e951b6fd09e8be369ab409c8d895de01cde2a7074d1": {
       "category": "大学院",
       "content_hash": "00e78ae95bb1f2d2cb5ea7f92ff2a52bf7c5c741efb6e9d3b272dd660cfbe577",
@@ -359,23 +342,6 @@
       "title": "2027年度 外国人留学生対象入学試験 出願資格(募集要項抜粋) https://www.keio.ac.jp/files/868e58a9f0dba4a64de21d3c705a0b3735c7281ee550a23764863c13cb4b1cf2",
       "url": "https://www.keio.ac.jp/files/868e58a9f0dba4a64de21d3c705a0b3735c7281ee550a23764863c13cb4b1cf2"
     },
-    "300dad0c8890fa7d254cdb4e21f280920d9add45e1e112e4a9743dbbbedc6dba": {
-      "category": "募集要项",
-      "content_hash": "e2d337903e88bde02f61590ace32ca54b6cbcbdc7659a0bc711f29ec1171f11b",
-      "first_seen_at": "2026-06-30T11:26:55+00:00",
-      "is_new_until": "2026-07-07T11:26:55+00:00",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T11:26:55+00:00",
-      "matched": "募集要項 / ryugakusei",
-      "ownership": "国立",
-      "pdf_text_chars": 2212,
-      "pdf_year_status": "target",
-      "region": "九州",
-      "school": "長崎大学",
-      "source": "https://www.liaison.nagasaki-u.ac.jp/wp-content/uploads/2025/10/b53398e7a45e7195d6b6874ac937d947.pdf",
-      "title": "募集要項 https://www.liaison.nagasaki-u.ac.jp/wp-content/uploads/2025/10/b53398e7a45e7195d6b6874ac937d947.pdf",
-      "url": "https://www.liaison.nagasaki-u.ac.jp/wp-content/uploads/2025/10/b53398e7a45e7195d6b6874ac937d947.pdf"
-    },
     "3124fa18a0eaf519846d644b867c92cad9625d2803fc6d9049864b3130686d99": {
       "category": "其他",
       "content_hash": "",
@@ -407,23 +373,6 @@
       "source": "https://www.shukutoku.ac.jp/admission/albums/abm.php?d=3116&f=abm00034786.pdf&n=2027%E7%A4%BE%E4%BC%9A%E4%BA%BA%E9%81%B8%E6%8A%9C.pdf",
       "title": "外国人留学生選抜（併願） https://www.shukutoku.ac.jp/admission/albums/abm.php?d=3116&f=abm00034786.pdf&n=2027%E7%A4%BE%E4%BC%9A%E4%BA%BA%E9%81%B8%E6%8A%9C.pdf",
       "url": "https://www.shukutoku.ac.jp/admission/albums/abm.php?d=3116&f=abm00034786.pdf&n=2027%E7%A4%BE%E4%BC%9A%E4%BA%BA%E9%81%B8%E6%8A%9C.pdf"
-    },
-    "3548d80e0720adbb23f234359ac23a49e2f3c497fd9974db441de5313d47dbf1": {
-      "category": "募集要项",
-      "content_hash": "554aebb4e3d5c93d7eb5b2d7202f00462e0479139eda598c55d6f54d317b2621",
-      "first_seen_at": "2026-06-30T11:26:55+00:00",
-      "is_new_until": "2026-07-07T11:26:55+00:00",
-      "is_pdf": true,
-      "last_seen_at": "2026-06-30T11:26:55+00:00",
-      "matched": "募集要項 / international students / international student",
-      "ownership": "国立",
-      "pdf_text_chars": 3369,
-      "pdf_year_status": "target",
-      "region": "关东",
-      "school": "東京海洋大学",
-      "source": "https://www.kaiyodai.ac.jp/international/upload-file/fed1a4e198ad94a32d2999cc8a863933d010308c.pdf",
-      "title": "募集要項（英語） https://www.kaiyodai.ac.jp/international/upload-file/fed1a4e198ad94a32d2999cc8a863933d010308c.pdf",
-      "url": "https://www.kaiyodai.ac.jp/international/upload-file/fed1a4e198ad94a32d2999cc8a863933d010308c.pdf"
     },
     "378b5a701861868f648d386c83fa01af8562a40e2888eb0d7f6b2c7e6ec38367": {
       "category": "大学院",
@@ -1518,7 +1467,7 @@
       "西南学院大学: https://www.seinan-gu.ac.jp/admissions/ -> <urlopen error curl: (35) OpenSSL/3.0.13: error:0A000152:SSL routines::unsafe legacy renegotiation disabled>"
     ],
     "errors": 5,
-    "results": 83,
+    "results": 80,
     "schools": 67,
     "total_schools": 269
   },

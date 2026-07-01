@@ -149,7 +149,9 @@ def infer_relevance(title, matched, pdf_year_status=""):
     text = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return 0
-    if pdf_year_status == "not_target":
+    if monitor.is_non_admission_recruitment(title):
+        return 0
+    if pdf_year_status in ("not_target", "excluded"):
         return 0
     if (
         pdf_year_status != "target"

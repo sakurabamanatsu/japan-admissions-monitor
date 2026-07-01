@@ -90,7 +90,9 @@ def is_relevant(title, matched, pdf_year_status=""):
     combined = f"{title} {matched}".lower()
     if monitor.is_scholarship_related(title):
         return False
-    if pdf_year_status == "not_target":
+    if monitor.is_non_admission_recruitment(title):
+        return False
+    if pdf_year_status in ("not_target", "excluded"):
         return False
     if (
         pdf_year_status != "target"

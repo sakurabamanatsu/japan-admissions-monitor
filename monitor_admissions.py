@@ -109,10 +109,40 @@ SCHOLARSHIP_EXCLUSION_TERMS = (
     "mext",
 )
 
+NON_ADMISSION_EXCLUSION_TERMS = (
+    "入居募集",
+    "入居申請",
+    "宿舎募集",
+    "学生寮",
+    "国際交流館入居",
+    "非常勤講師",
+    "非常勤職員",
+    "講師募集",
+    "教員公募",
+    "教員募集",
+    "職員募集",
+    "求人件名",
+    "求人内容",
+    "採用情報",
+    "dormitory",
+    "residence hall",
+    "moving-in",
+    "job information",
+    "job type",
+    "employment status",
+    "faculty position",
+    "staff recruitment",
+)
+
 
 def is_scholarship_related(text):
     lower = text.lower()
     return any(term in lower for term in SCHOLARSHIP_EXCLUSION_TERMS)
+
+
+def is_non_admission_recruitment(text):
+    lower = text.lower()
+    return any(term in lower for term in NON_ADMISSION_EXCLUSION_TERMS)
 
 
 def is_target_admission_year(text, target_year=TARGET_ADMISSION_YEAR):
@@ -269,6 +299,8 @@ def inspect_pdf_admission_year(raw, max_pages=5):
         except Exception:
             pass
     heading_text = clean_text(" ".join(page_text[:2]))
+    if is_non_admission_recruitment(heading_text):
+        return "excluded", len(text), text
     if is_target_admission_year(heading_text):
         return "target", len(text), text
     if len(text) < 80:
@@ -349,6 +381,8 @@ def link_priority(text, keywords):
     ):
         score -= 20
     if is_scholarship_related(text):
+        score -= 200
+    if is_non_admission_recruitment(text):
         score -= 200
     return score
 
@@ -579,7 +613,10 @@ def collect_school(
             if not usable_url(next_url) or not same_site(final_url, next_url):
                 continue
             link_text = clean_text(f'{link.get("text", "")} {next_url}')
-            if is_scholarship_related(link_text):
+            if (
+                is_scholarship_related(link_text)
+                or is_non_admission_recruitment(link_text)
+            ):
                 continue
             if urlparse(next_url).path.lower().endswith(".pdf"):
                 if keyword_hits(link_text, keywords):

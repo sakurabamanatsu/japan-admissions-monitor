@@ -2,6 +2,7 @@
 import json
 import os
 import smtplib
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from email.message import EmailMessage
 from pathlib import Path
@@ -229,6 +230,17 @@ def select_school_batch(all_schools, checked_at, last_batch=""):
     return selected, str(batch_number)
 
 
+def collect_school_safely(school, keywords):
+    print(f"- {school['name']}", flush=True)
+    try:
+        items, errors = monitor.collect_school(school, keywords)
+    except Exception as exc:
+        # One malformed website must not stop the remaining checks or deploy.
+        items = []
+        errors = [f"未预期的解析错误：{type(exc).__name__}: {exc}"]
+    return school, items, errors
+
+
 def main():
     state = load_state()
     initialized = bool(state.get("initialized"))
@@ -280,59 +292,76 @@ def main():
     print(
         f"开始云端检查第 {active_batch} 批，共 {len(schools)} 所学校。"
     )
-    for school in schools:
-        print(f"- {school['name']}", flush=True)
-        items, school_errors = monitor.collect_school(school, keywords)
-        errors.extend(f"{school['name']}: {error}" for error in school_errors)
-        school_was_known = school["name"] in baselined_schools
-        for item in items:
-            key = monitor.item_key(item["school"], item["url"])
-            if not is_relevant(
-                item["title"],
-                item["matched"],
-                item.get("pdf_year_status", ""),
-            ):
-                known_items.pop(key, None)
-                continue
-            old = known_items.get(key)
-            first_seen = old.get("first_seen_at") if old else checked_at.isoformat()
-            changed = old is not None and old.get("title") != item["title"]
-            content_changed = bool(
-                old
-                and item.get("content_hash")
-                and old.get("content_hash") != item.get("content_hash")
+    worker_count = max(1, int(os.environ.get("MONITOR_WORKERS", "6")))
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        results = executor.map(
+            lambda school: collect_school_safely(school, keywords),
+            schools,
+        )
+        for school, items, school_errors in results:
+            errors.extend(
+                f"{school['name']}: {error}" for error in school_errors
             )
-            newly_detected = (
-                initialized
-                and school_was_known
-                and (old is None or changed or content_changed)
-            )
-            record = {
-                "school": item["school"],
-                "ownership": school.get("ownership", "未分类"),
-                "region": school.get("region", "其他"),
-                "category": infer_category(item["title"], item["matched"]),
-                "title": item["title"],
-                "url": item["url"],
-                "matched": item["matched"],
-                "source": item["source"],
-                "is_pdf": item["url"].lower().split("?", 1)[0].endswith(".pdf"),
-                "first_seen_at": first_seen,
-                "last_seen_at": checked_at.isoformat(),
-                "content_hash": item.get("content_hash")
-                or old.get("content_hash", "") if old else item.get("content_hash", ""),
-                "pdf_year_status": item.get("pdf_year_status", ""),
-                "pdf_text_chars": item.get("pdf_text_chars", 0),
-                "is_new_until": (
-                    (checked_at + timedelta(days=7)).isoformat()
-                    if newly_detected
-                    else old.get("is_new_until", "") if old else ""
-                ),
-            }
-            if newly_detected:
-                new_items.append(record)
-            known_items[key] = record
-        baselined_schools.add(school["name"])
+            school_was_known = school["name"] in baselined_schools
+            for item in items:
+                key = monitor.item_key(item["school"], item["url"])
+                if not is_relevant(
+                    item["title"],
+                    item["matched"],
+                    item.get("pdf_year_status", ""),
+                ):
+                    known_items.pop(key, None)
+                    continue
+                old = known_items.get(key)
+                first_seen = (
+                    old.get("first_seen_at")
+                    if old
+                    else checked_at.isoformat()
+                )
+                changed = old is not None and old.get("title") != item["title"]
+                content_changed = bool(
+                    old
+                    and item.get("content_hash")
+                    and old.get("content_hash") != item.get("content_hash")
+                )
+                newly_detected = (
+                    initialized
+                    and school_was_known
+                    and (old is None or changed or content_changed)
+                )
+                record = {
+                    "school": item["school"],
+                    "ownership": school.get("ownership", "未分类"),
+                    "region": school.get("region", "其他"),
+                    "category": infer_category(
+                        item["title"], item["matched"]
+                    ),
+                    "title": item["title"],
+                    "url": item["url"],
+                    "matched": item["matched"],
+                    "source": item["source"],
+                    "is_pdf": (
+                        item["url"].lower().split("?", 1)[0].endswith(".pdf")
+                    ),
+                    "first_seen_at": first_seen,
+                    "last_seen_at": checked_at.isoformat(),
+                    "content_hash": (
+                        item.get("content_hash")
+                        or old.get("content_hash", "") if old
+                        else item.get("content_hash", "")
+                    ),
+                    "pdf_year_status": item.get("pdf_year_status", ""),
+                    "pdf_text_chars": item.get("pdf_text_chars", 0),
+                    "is_new_until": (
+                        (checked_at + timedelta(days=7)).isoformat()
+                        if newly_detected
+                        else old.get("is_new_until", "") if old else ""
+                    ),
+                }
+                if newly_detected:
+                    new_items.append(record)
+                known_items[key] = record
+            baselined_schools.add(school["name"])
 
     state["initialized"] = True
     state["target_admission_year"] = monitor.TARGET_ADMISSION_YEAR
@@ -366,7 +395,7 @@ def main():
         "generated_at": checked_at.isoformat(),
         "target_admission_year": monitor.TARGET_ADMISSION_YEAR,
         "interval_minutes": 15,
-        "schedule_text": "每日 08:30–17:45 分批检查；每所大学约每小时一次",
+        "schedule_text": "每日 08:37–17:52 分批检查；每所大学约每小时一次",
         "active_batch": active_batch,
         "last_error": f"{len(errors)} 个网页访问失败" if errors else "",
         "error_details": errors[:30],
@@ -390,7 +419,10 @@ def main():
         "items": rows,
     }
     save_json(DATA_FILE, payload)
-    send_email(new_items)
+    try:
+        send_email(new_items)
+    except Exception as exc:
+        print(f"邮件发送失败，但监控结果仍会保存：{type(exc).__name__}: {exc}")
     print(
         f"完成：展示 {len(rows)} 条，新增 {len(new_items)} 条，"
         f"错误 {len(errors)} 个。"

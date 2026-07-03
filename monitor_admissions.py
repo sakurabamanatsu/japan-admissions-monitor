@@ -560,7 +560,7 @@ def collect_school(
         try:
             final_url, content_type, raw = fetch(url)
             final_url = normalize_url(final_url)
-        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+        except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
             errors.append(f"{url} -> {exc}")
             continue
 
@@ -607,9 +607,15 @@ def collect_school(
         candidates = []
         for link in page["links"]:
             href = (link.get("href") or "").strip()
-            if href.startswith(("#", "mailto:", "tel:", "javascript:")):
+            if not href or href.lower().startswith(
+                ("#", "mailto:", "tel:", "javascript:", "data:")
+            ):
                 continue
-            next_url = normalize_url(urljoin(final_url, href))
+            try:
+                next_url = normalize_url(urljoin(final_url, href))
+            except ValueError as exc:
+                errors.append(f"{href} -> 无效链接：{exc}")
+                continue
             if not usable_url(next_url) or not same_site(final_url, next_url):
                 continue
             link_text = clean_text(f'{link.get("text", "")} {next_url}')

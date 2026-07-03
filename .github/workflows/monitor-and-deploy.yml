@@ -5,10 +5,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - cloud_state.json
+      - web/data.json
   schedule:
-    # GitHub cron uses UTC. These are 08:30-17:45 in Japan (JST).
-    - cron: "30,45 23 * * *"
-    - cron: "0,15,30,45 0-8 * * *"
+    # GitHub cron uses UTC. These are 08:37-17:52 in Japan (JST).
+    # Non-round minutes reduce delays caused by GitHub's peak scheduler load.
+    - cron: "37,52 23 * * *"
+    - cron: "7,22,37,52 0-8 * * *"
 
 concurrency:
   group: admissions-monitor
@@ -25,9 +29,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -48,6 +55,7 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           MONITOR_BATCH: ${{ github.event_name == 'schedule' && 'auto' || 'all' }}
           MONITOR_BATCH_COUNT: "4"
+          MONITOR_WORKERS: "6"
         run: python github_monitor.py
 
       - name: Save monitoring state
